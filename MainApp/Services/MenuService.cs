@@ -10,18 +10,12 @@ public class MenuService
         {
             Console.Clear();
             Console.WriteLine("Welcome to the Silicon Contact App!");
-            Console.WriteLine("<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>");
-            Console.WriteLine("");
-            Console.WriteLine("Press [1] to ADD a contact.");
-            Console.WriteLine("");
-            Console.WriteLine("Press [2] to SHOW all contacts.");
-            Console.WriteLine("");
-            Console.WriteLine("Press [3] to DELETE all contacts.");
-            Console.WriteLine("");
-            Console.WriteLine("Press [4] to EXIT the application.");
-            Console.WriteLine("");
-            Console.WriteLine("<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>");
-
+            Console.WriteLine(
+                "<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>"+"\n" +
+                "Press [1] to ADD a contact. \n" +
+                "Press [2] to SHOW all contacts. \n" +
+                "Press [3] to EXIT the application." +"\n" + 
+                "<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>");
             string input = Console.ReadLine();
 
             if (int.TryParse(input, out int menuChoice))
@@ -30,31 +24,22 @@ public class MenuService
                 {
                     case 1:
                         {
-                            Console.Clear ();
+                            AddContact();
                         }
                         break;
-
                     case 2:
                         {
-                            Console.Clear ();
+                            DisplayAllContacts();
                         }
-                        break;
-
+                        break;;
                     case 3:
-                        {
-                            Console.Clear ();
-                        }
-                        break;
-
-                    case 4:
                         {
                             ExitApplication();
                         }
                         break;
-
                     default:
                         {
-                            DisplayMessage("Wrong choice! Enter a number between 1 and 4.");
+                            DisplayMessage("Wrong choice! Enter a number between 1 and 3.");
                         }
                         break;
                 }
@@ -67,6 +52,15 @@ public class MenuService
         }
     }
 
+    public void AddContact()
+    {
+        Console.Clear();
+    }
+
+    public void DisplayAllContacts()
+    {
+        Console.Clear();
+    }
     public void ExitApplication()
     {
        
