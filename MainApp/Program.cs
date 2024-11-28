@@ -1,5 +1,5 @@
 ﻿using MainApp.Services;
 
-MenuService menuStart = new MenuService();
+MenuService menuService = new MenuService();
 
-menuStart.Menu();
+menuService.Start();
