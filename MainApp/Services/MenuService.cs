@@ -43,7 +43,6 @@ public class MenuService
                         }
                         break;
                 }
-                DisplayMessage("Press any key to continue");
             }
             else
             {
@@ -51,7 +50,6 @@ public class MenuService
             }
         }
     }
-
     public void AddContact()
     {
         Console.Clear();
