@@ -1,4 +1,7 @@
-﻿using System.ComponentModel.Design;
+﻿using Business.Factories;
+using Business.Models;
+using System.ComponentModel.Design;
+using System.Net.WebSockets;
 
 namespace MainApp.Services;
 
@@ -53,6 +56,31 @@ public class MenuService
     public void AddContact()
     {
         Console.Clear();
+
+        ContactRegistrationForm contactForm = ContactFactory.Create();
+
+        Console.Write("Enter your firstname: ");
+        contactForm.FirstName = Console.ReadLine();
+
+        Console.Write("Enter your lastname: ");
+        contactForm.LastName = Console.ReadLine();
+
+        Console.Write("Enter your email: ");
+        contactForm.Email = Console.ReadLine();
+
+        Console.Write("Enter your phone-number: ");
+        contactForm.PhoneNumber = Console.ReadLine();
+
+        Console.Write("Enter your Address: ");
+        contactForm.Address = Console.ReadLine();
+
+        Console.Write("Enter your postal-code: ");
+        contactForm.PostalCode = Console.ReadLine();
+
+        Console.Write("Enter your city: ");
+        contactForm.City = Console.ReadLine();
+
+        ContactEntity contactEntity = ContactFactory.Create(contactForm);
     }
 
     public void DisplayAllContacts()
