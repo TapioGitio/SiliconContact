@@ -2,10 +2,8 @@
 using Business.Models;
 
 namespace MainApp.Services;
-
 public class MenuService
 {
-
     public void StartMenu()
     {
         while (true)
@@ -25,24 +23,16 @@ public class MenuService
                 switch (menuChoice)
                 {
                     case 1:
-                    {
-                        AddContact();
-                    }
+                    AddContact();
                 break;
                     case 2:
-                    {
-                        DisplayAllContacts();
-                    }
+                    DisplayContacts();
                 break;
                     case 3:
-                    {
-                        ExitApplication();
-                    }
+                    ExitApplication();
                 break;
                     default:
-                    {
-                        DisplayMessage("Wrong choice! Enter a number between 1 and 3.");
-                    }
+                    DisplayMessage("Wrong choice! Enter a number between 1 and 3.");
                 break;
                 }
             }
@@ -82,7 +72,7 @@ public class MenuService
         ContactEntity contactEntity = ContactFactory.Create(contactForm);
     }
 
-    public void DisplayAllContacts()
+    public void DisplayContacts()
     {
         Console.Clear();
     }
