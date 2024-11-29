@@ -1,13 +1,12 @@
 ﻿using Business.Factories;
 using Business.Models;
-using System.ComponentModel.Design;
-using System.Net.WebSockets;
 
 namespace MainApp.Services;
 
 public class MenuService
 {
-    public void Start()
+
+    public void StartMenu()
     {
         while (true)
         {
@@ -19,32 +18,32 @@ public class MenuService
                 "Press [2] to SHOW all contacts. \n" +
                 "Press [3] to EXIT the application." +"\n" + 
                 "<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine()!.Trim();
 
             if (int.TryParse(input, out int menuChoice))
             {
                 switch (menuChoice)
                 {
                     case 1:
-                        {
-                            AddContact();
-                        }
-                        break;
+                    {
+                        AddContact();
+                    }
+                break;
                     case 2:
-                        {
-                            DisplayAllContacts();
-                        }
-                        break;;
+                    {
+                        DisplayAllContacts();
+                    }
+                break;
                     case 3:
-                        {
-                            ExitApplication();
-                        }
-                        break;
+                    {
+                        ExitApplication();
+                    }
+                break;
                     default:
-                        {
-                            DisplayMessage("Wrong choice! Enter a number between 1 and 3.");
-                        }
-                        break;
+                    {
+                        DisplayMessage("Wrong choice! Enter a number between 1 and 3.");
+                    }
+                break;
                 }
             }
             else
@@ -119,7 +118,6 @@ public class MenuService
     }
     public void DisplayMessage(string message)
     {
-        Console.Clear();
         Console.WriteLine(message);
         Console.ReadKey();
     }
