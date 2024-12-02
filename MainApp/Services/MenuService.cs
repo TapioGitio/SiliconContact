@@ -5,7 +5,7 @@ using Business.Services;
 namespace MainApp.Services;
 public class MenuService
 {
-    private readonly ContactService _contactService = new ContactService();
+    private readonly ContactService _contactService = new();
 
 
     public void StartMenu()
@@ -52,7 +52,6 @@ public class MenuService
         }
     }
 
-
     public void AddContact()
     {
         Console.Clear();
@@ -94,12 +93,13 @@ public class MenuService
     }
     public void DisplayContacts()
     {
-        var contactList = _contactService.Display();
-
         Console.Clear();
+
+        var contactList = _contactService.Display();
 
         foreach (Contact contact in contactList)
         {
+            Console.WriteLine($"{"Id: ",-5}{contact.Id}");
             Console.WriteLine($"{"Firstname: ", -5}{contact.FirstName}");
             Console.WriteLine($"{"Lastname: ",-5}{contact.LastName}");
             Console.WriteLine($"{"Email: ",-5}{contact.Email}");

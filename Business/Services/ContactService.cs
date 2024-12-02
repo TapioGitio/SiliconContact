@@ -6,7 +6,8 @@ namespace Business.Services;
 
 public class ContactService
 {
-    private readonly List<ContactEntity> _contacts = [];
+    private List<ContactEntity> _contacts = [];
+    private readonly StorageService _storageService = new();
 
     public bool Add(ContactRegistrationForm contactForm)
     {
@@ -15,6 +16,7 @@ public class ContactService
             ContactEntity contactEntity = ContactFactory.Create(contactForm);
 
             _contacts.Add(contactEntity);
+            _storageService.SaveContactsToStorage(_contacts);
             return true;
        }
        catch (Exception ex)
