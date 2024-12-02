@@ -97,7 +97,7 @@ public class MenuService
 
         var contactList = _contactService.Display();
 
-        foreach (ContactEntity contact in contactList)
+        foreach (Contact contact in contactList)
         {
             Console.WriteLine($"{"Id: ",-5}{contact.Id}");
             Console.WriteLine($"{"Firstname: ", -5}{contact.FirstName}");
