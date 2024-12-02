@@ -15,12 +15,12 @@ public class MenuService
             Console.Clear();
             Console.WriteLine("Welcome to the Silicon Contact App!");
             Console.WriteLine(
-                "<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>"+"\n" +
+                ""+"\n" +
                 "Press [1] to ADD a contact. \n" +
                 "Press [2] to SHOW all contacts. \n" +
                 "Press [3] to DELETE all contacts." +"\n" +
                 "Press [4] to EXIT the application." + "\n" +
-                "<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>");
+                "");
 
             string input = Console.ReadLine()!.Trim();
 
