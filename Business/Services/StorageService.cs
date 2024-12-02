@@ -1,4 +1,5 @@
-﻿using Business.Models;
+﻿using Business.Factories;
+using Business.Models;
 using System.Diagnostics;
 using System.Text.Json;
 
@@ -48,6 +49,7 @@ public class StorageService
 
             var json = File.ReadAllText(_filePath);
             var list = JsonSerializer.Deserialize<List<ContactEntity>>(json, _jsonSerializerOption);
+
 
             return list ?? [];
 
