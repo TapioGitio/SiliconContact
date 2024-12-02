@@ -26,12 +26,20 @@ public class ContactService
        }
     }
 
-    public IEnumerable<ContactEntity> Display()
+    public IEnumerable<Contact> Display()
     {
+        List<Contact> userFriendly = new List<Contact>();
+
         try
         {
             _contacts = _storageService.LoadContactsFromStorage();
-            return _contacts;
+
+            foreach (ContactEntity contactEntity in _contacts)
+            {
+                Contact contact = ContactFactory.Create(contactEntity);
+                userFriendly.Add(contact);
+            }
+            return userFriendly;
         }
         catch (Exception ex)
         {
@@ -43,5 +51,6 @@ public class ContactService
     public void Remove()
     {
         _contacts.Clear();
+        _storageService.DeleteContactsFromStorage();
     }
 }

@@ -60,4 +60,16 @@ public class StorageService
             return [];
         }
     }
+
+    public void DeleteContactsFromStorage()
+    {
+        try
+        {
+            File.WriteAllText(_filePath, string.Empty);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+        }
+    }
 }
