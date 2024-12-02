@@ -26,16 +26,12 @@ public class ContactService
        }
     }
 
-    public IEnumerable<Contact> Display()
+    public IEnumerable<ContactEntity> Display()
     {
         try
         {
-            var list = new List<Contact>();
-            foreach (var contactEntity in _contacts)
-            {
-                list.Add(ContactFactory.Create(contactEntity));
-            }
-            return list;
+            _contacts = _storageService.LoadContactsFromStorage();
+            return _contacts;
         }
         catch (Exception ex)
         {

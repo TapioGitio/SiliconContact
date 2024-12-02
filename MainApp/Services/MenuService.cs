@@ -97,12 +97,13 @@ public class MenuService
 
         var contactList = _contactService.Display();
 
-        foreach (Contact contact in contactList)
+        foreach (ContactEntity contact in contactList)
         {
             Console.WriteLine($"{"Id: ",-5}{contact.Id}");
             Console.WriteLine($"{"Firstname: ", -5}{contact.FirstName}");
             Console.WriteLine($"{"Lastname: ",-5}{contact.LastName}");
             Console.WriteLine($"{"Email: ",-5}{contact.Email}");
+            Console.WriteLine("");
         }
 
         Console.ReadKey();
@@ -113,7 +114,7 @@ public class MenuService
         {
             Console.Clear();
 
-            Console.WriteLine("Do you want to delete all the contacts?");
+            Console.WriteLine("Do you want to delete all the contacts? (y/n)");
             string answer = Console.ReadLine()!.ToLower().Trim();
 
             if (string.IsNullOrWhiteSpace(answer))
