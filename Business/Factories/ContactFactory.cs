@@ -1,4 +1,6 @@
-﻿using Business.Models;
+﻿using Business.Handlers;
+using Business.Models;
+using System.Diagnostics;
 
 namespace Business.Factories;
 
@@ -6,32 +8,56 @@ public static class ContactFactory
 {
     public static ContactRegistrationForm Create()
     {
-        return new ContactRegistrationForm();
+        try
+        {
+            return new ContactRegistrationForm();
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return null!;
+        }
     }
 
     public static ContactEntity Create(ContactRegistrationForm contactForm)
     {
-        return new ContactEntity
+        try
         {
-            Id = Guid.NewGuid().ToString(),
-            FirstName = contactForm.FirstName,
-            LastName = contactForm.LastName,
-            Email = contactForm.Email,
-            PhoneNumber = contactForm.PhoneNumber,
-            Address = contactForm.Address,
-            PostalCode = contactForm.PostalCode,
-            City = contactForm.City,
-        };
+            return new ContactEntity
+            {
+                Id = IdGenerator.GenerateID(),
+                FirstName = contactForm.FirstName,
+                LastName = contactForm.LastName,
+                Email = contactForm.Email,
+                PhoneNumber = contactForm.PhoneNumber,
+                Address = contactForm.Address,
+                PostalCode = contactForm.PostalCode,
+                City = contactForm.City,
+            };
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return null!;
+        }
     }
 
     public static Contact Create(ContactEntity contactEntity)
     {
-        return new Contact
+        try
         {
-            Id = Guid.NewGuid().ToString(),
-            FirstName = contactEntity.FirstName,
-            LastName = contactEntity.LastName,
-            Email = contactEntity.Email
-        };
+            return new Contact
+            {
+                Id = contactEntity.Id,
+                FirstName = contactEntity.FirstName,
+                LastName = contactEntity.LastName,
+                Email = contactEntity.Email
+            };
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return null!;
+        }
     }
 }
