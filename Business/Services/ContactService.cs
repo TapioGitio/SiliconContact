@@ -48,6 +48,27 @@ public class ContactService
         }
     }
 
+    public bool Update(string contactName, string updatedEmail)
+    {
+        try
+        {
+            var contactEntity = _contacts.FirstOrDefault(x => x.FirstName.Equals(contactName, StringComparison.OrdinalIgnoreCase));
+            if (contactEntity != null)
+            {
+                contactEntity.Email = updatedEmail;
+
+                _storageService.SaveContactsToStorage(_contacts);
+                return true;
+            }
+            return false;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return false;
+        }
+    }
+
     public void Remove()
     {
         _contacts.Clear();

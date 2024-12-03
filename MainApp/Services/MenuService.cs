@@ -18,8 +18,9 @@ public class MenuService
                 ""+"\n" +
                 "Press [1] to ADD a contact. \n" +
                 "Press [2] to SHOW all contacts. \n" +
-                "Press [3] to DELETE all contacts." +"\n" +
-                "Press [4] to EXIT the application." + "\n" +
+                "Press [3] to UPDATE a contact. \n" +
+                "Press [4] to DELETE all contacts." +"\n" +
+                "Press [5] to EXIT the application." + "\n" +
                 "");
 
             string input = Console.ReadLine()!.Trim();
@@ -35,9 +36,12 @@ public class MenuService
                     DisplayContacts();
                 break;
                     case 3:
-                    DeleteContacts();
+                    UpdateContact();
                 break;
                     case 4:
+                    DeleteContacts();
+                break;
+                    case 5:
                     ExitApplication();
                 break;
                     default:
@@ -107,6 +111,40 @@ public class MenuService
         }
 
         Console.ReadKey();
+    }
+
+    public void UpdateContact()
+    {
+        while ( true )
+        {
+            Console.Clear();
+            Console.Write("Write your firstname to be able to change your email: ");
+
+            string input = Console.ReadLine()!.Trim().ToLower();
+            string newEmail;
+
+            if (!string.IsNullOrWhiteSpace(input))
+            {
+                Console.Write($"{input} Write your new Email: ");
+                newEmail = Console.ReadLine()!;
+
+                if (!string.IsNullOrWhiteSpace(newEmail))
+                {
+                    _contactService.Update(input, newEmail);
+                    DisplayMessage("Your email has been updated");
+                    break;
+                }
+                else
+                {
+                    DisplayMessage("Please enter your new email");
+                }
+
+            }
+            else
+            {
+                DisplayMessage("Please enter your name...");
+            }
+        }
     }
     public void DeleteContacts()
     {
