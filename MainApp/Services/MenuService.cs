@@ -45,7 +45,7 @@ public class MenuService(ContactService contactService) : IMenuService
                         ExitApplication();
                         break;
                     default:
-                        DisplayMessage("Wrong choice! Enter a number between 1 and 3.");
+                        DisplayMessage("Wrong choice! Enter a number between 1 and 5.");
                         break;
                 }
             }
