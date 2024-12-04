@@ -1,9 +1,10 @@
 ﻿using Business.Factories;
 using Business.Models;
 using Business.Services;
+using MainApp.Interfaces;
 
 namespace MainApp.Services;
-public class MenuService
+public class MenuService : IMenuService
 {
     private readonly ContactService _contactService = new();
 
@@ -15,11 +16,11 @@ public class MenuService
             Console.Clear();
             Console.WriteLine("Welcome to the Silicon Contact App!");
             Console.WriteLine(
-                ""+"\n" +
+                "" + "\n" +
                 "Press [1] to ADD a contact. \n" +
                 "Press [2] to SHOW all contacts. \n" +
                 "Press [3] to UPDATE a contact. \n" +
-                "Press [4] to DELETE all contacts." +"\n" +
+                "Press [4] to DELETE all contacts." + "\n" +
                 "Press [5] to EXIT the application." + "\n" +
                 "");
 
@@ -30,23 +31,23 @@ public class MenuService
                 switch (menuChoice)
                 {
                     case 1:
-                    AddContact();
-                break;
+                        AddContact();
+                        break;
                     case 2:
-                    DisplayContacts();
-                break;
+                        DisplayContacts();
+                        break;
                     case 3:
-                    UpdateContact();
-                break;
+                        UpdateContact();
+                        break;
                     case 4:
-                    DeleteContacts();
-                break;
+                        DeleteContacts();
+                        break;
                     case 5:
-                    ExitApplication();
-                break;
+                        ExitApplication();
+                        break;
                     default:
-                    DisplayMessage("Wrong choice! Enter a number between 1 and 3.");
-                break;
+                        DisplayMessage("Wrong choice! Enter a number between 1 and 3.");
+                        break;
                 }
             }
             else
@@ -104,7 +105,7 @@ public class MenuService
         foreach (Contact contact in contactList)
         {
             Console.WriteLine($"{"Id: ",-5}{contact.Id}");
-            Console.WriteLine($"{"Firstname: ", -5}{contact.FirstName}");
+            Console.WriteLine($"{"Firstname: ",-5}{contact.FirstName}");
             Console.WriteLine($"{"Lastname: ",-5}{contact.LastName}");
             Console.WriteLine($"{"Email: ",-5}{contact.Email}");
             Console.WriteLine("");
@@ -115,7 +116,7 @@ public class MenuService
 
     public void UpdateContact()
     {
-        while ( true )
+        while (true)
         {
             Console.Clear();
             Console.Write("Write your firstname to be able to change your email: ");
@@ -145,7 +146,7 @@ public class MenuService
                 }
                 else
                 {
-                    DisplayMessage("The contact was not found, double-check your spelling..");
+                    DisplayMessage("\nThe contact was not found, double-check your spelling..");
                 }
             }
             else
@@ -174,7 +175,7 @@ public class MenuService
                 DisplayMessage("\nThe contacts has been removed!");
                 return;
             }
-            else if (answer == "n") 
+            else if (answer == "n")
             {
                 return;
             }
@@ -182,11 +183,11 @@ public class MenuService
             {
                 DisplayMessage($"{answer} is not a valid input");
             }
-        }       
+        }
     }
     public void ExitApplication()
     {
-       
+
         while (true)
         {
             Console.Clear();

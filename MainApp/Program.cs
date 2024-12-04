@@ -1,6 +1,7 @@
-﻿using MainApp.Services;
+﻿using MainApp.Interfaces;
+using MainApp.Services;
 
-MenuService run = new MenuService();
+IMenuService run = new MenuService();
 
 run.StartMenu();
 
