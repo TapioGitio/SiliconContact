@@ -4,10 +4,10 @@ using System.Diagnostics;
 
 namespace Business.Services;
 
-public class ContactService
+public class ContactService(StorageService storageService)
 {
     private List<ContactEntity> _contacts = [];
-    private readonly StorageService _storageService = new();
+    private readonly StorageService _storageService = storageService;
 
     public bool Add(ContactRegistrationForm contactForm)
     {

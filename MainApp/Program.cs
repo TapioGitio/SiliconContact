@@ -8,7 +8,8 @@ IHost host = Host.CreateDefaultBuilder()
     .ConfigureServices(services =>
     {
         services.AddSingleton<ContactService>();
-        services.AddTransient<IMenuService, MenuService>();
+        services.AddSingleton<StorageService>();
+        services.AddSingleton<IMenuService, MenuService>();
     })
     .Build();
 
