@@ -1,7 +1,9 @@
-﻿using MainApp.Interfaces;
+﻿using Business.Services;
+using MainApp.Interfaces;
 using MainApp.Services;
 
-IMenuService run = new MenuService();
+var contactService = new ContactService();
+IMenuService run = new MenuService(contactService);
 
 run.StartMenu();
 

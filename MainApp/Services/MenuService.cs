@@ -4,11 +4,8 @@ using Business.Services;
 using MainApp.Interfaces;
 
 namespace MainApp.Services;
-public class MenuService : IMenuService
+public class MenuService(ContactService contactService) : IMenuService
 {
-    private readonly ContactService _contactService = new();
-
-
     public void StartMenu()
     {
         while (true)
@@ -84,7 +81,7 @@ public class MenuService : IMenuService
         Console.Write("Enter your city: ");
         contactForm.City = Console.ReadLine()!;
 
-        bool exists = _contactService.Add(contactForm);
+        bool exists = contactService.Add(contactForm);
 
         if (exists)
         {
@@ -100,7 +97,7 @@ public class MenuService : IMenuService
     {
         Console.Clear();
 
-        var contactList = _contactService.Display();
+        var contactList = contactService.Display();
 
         foreach (Contact contact in contactList)
         {
@@ -127,15 +124,15 @@ public class MenuService : IMenuService
             if (!string.IsNullOrWhiteSpace(input))
             {
 
-                if (_contactService.IfContactExists(input))
+                if (contactService.IfContactExists(input))
                 {
 
-                    Console.Write($"{input}, please enter your new email: ");
+                    Console.Write($"\n{input}, please enter your new email: ");
                     newEmail = Console.ReadLine()!;
 
                     if (!string.IsNullOrWhiteSpace(newEmail))
                     {
-                        _contactService.Update(input, newEmail);
+                        contactService.Update(input, newEmail);
                         DisplayMessage("\nYour email has been updated!");
                         break;
                     }
@@ -171,7 +168,7 @@ public class MenuService : IMenuService
             }
             else if (answer == "y")
             {
-                _contactService.Remove();
+                contactService.Remove();
                 DisplayMessage("\nThe contacts has been removed!");
                 return;
             }
