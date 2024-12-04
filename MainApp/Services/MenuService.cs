@@ -6,8 +6,10 @@ using MainApp.Interfaces;
 namespace MainApp.Services;
 public class MenuService(ContactService contactService) : IMenuService
 {
+    private readonly ContactService _contactService = contactService;
     public void StartMenu()
     {
+
         while (true)
         {
             Console.Clear();
@@ -81,7 +83,7 @@ public class MenuService(ContactService contactService) : IMenuService
         Console.Write("Enter your city: ");
         contactForm.City = Console.ReadLine()!;
 
-        bool exists = contactService.Add(contactForm);
+        bool exists = _contactService.Add(contactForm);
 
         if (exists)
         {
@@ -97,7 +99,7 @@ public class MenuService(ContactService contactService) : IMenuService
     {
         Console.Clear();
 
-        var contactList = contactService.Display();
+        var contactList = _contactService.Display();
 
         foreach (Contact contact in contactList)
         {
@@ -126,7 +128,7 @@ public class MenuService(ContactService contactService) : IMenuService
             if (!string.IsNullOrWhiteSpace(input))
             {
 
-                if (contactService.IfContactExists(input))
+                if (_contactService.IfContactExists(input))
                 {
 
                     Console.Write($"\n{input}, please enter your new email: ");
@@ -134,7 +136,7 @@ public class MenuService(ContactService contactService) : IMenuService
 
                     if (!string.IsNullOrWhiteSpace(newEmail))
                     {
-                        contactService.Update(input, newEmail);
+                        _contactService.Update(input, newEmail);
                         DisplayMessage("\nYour email has been updated!");
 
                         run = false;
@@ -172,7 +174,7 @@ public class MenuService(ContactService contactService) : IMenuService
             }
             else if (answer == "y")
             {
-                contactService.Remove();
+                _contactService.Remove();
                 DisplayMessage("\nThe contacts has been removed!");
                 return;
             }
