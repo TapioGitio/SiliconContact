@@ -113,7 +113,9 @@ public class MenuService(ContactService contactService) : IMenuService
 
     public void UpdateContact()
     {
-        while (true)
+        bool run = true;
+
+        while (run)
         {
             Console.Clear();
             Console.Write("Write your firstname to be able to change your email: ");
@@ -134,11 +136,12 @@ public class MenuService(ContactService contactService) : IMenuService
                     {
                         contactService.Update(input, newEmail);
                         DisplayMessage("\nYour email has been updated!");
-                        break;
+
+                        run = false;
                     }
                     else
                     {
-                        DisplayMessage("Please enter your new email");
+                        DisplayMessage("\nInvalid input...");
                     }
                 }
                 else
@@ -148,7 +151,8 @@ public class MenuService(ContactService contactService) : IMenuService
             }
             else
             {
-                DisplayMessage("Please enter your name...");
+                DisplayMessage("Press any key to return to startmenu.");
+                run= false;
             }
         }
     }
