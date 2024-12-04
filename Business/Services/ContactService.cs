@@ -52,6 +52,10 @@ public class ContactService
     {
         try
         {
+            /*This was made with AI: It creates a variable to check if the input matches a contacts firstname in my contacts-list
+            * with the FirstOrDefault method. It then checks if its not null to be able to set the email with an updated email
+            * provided from the user-input. Aswell as saving the updated info to the storage/file. Otherwise it returns as false.
+            */
             var contactEntity = _contacts.FirstOrDefault(x => x.FirstName.Equals(contactName, StringComparison.OrdinalIgnoreCase));
             if (contactEntity != null)
             {
@@ -68,6 +72,11 @@ public class ContactService
             return false;
         }
     }
+
+    public bool IfContactExists(string contactName)
+    {
+        return _contacts.Any(x => x.FirstName.Equals(contactName, StringComparison.OrdinalIgnoreCase));
+    }   
 
     public void Remove()
     {

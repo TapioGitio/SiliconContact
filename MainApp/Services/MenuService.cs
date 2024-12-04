@@ -125,20 +125,28 @@ public class MenuService
 
             if (!string.IsNullOrWhiteSpace(input))
             {
-                Console.Write($"{input} Write your new Email: ");
-                newEmail = Console.ReadLine()!;
 
-                if (!string.IsNullOrWhiteSpace(newEmail))
+                if (_contactService.IfContactExists(input))
                 {
-                    _contactService.Update(input, newEmail);
-                    DisplayMessage("Your email has been updated");
-                    break;
+
+                    Console.Write($"{input}, please enter your new email: ");
+                    newEmail = Console.ReadLine()!;
+
+                    if (!string.IsNullOrWhiteSpace(newEmail))
+                    {
+                        _contactService.Update(input, newEmail);
+                        DisplayMessage("\nYour email has been updated!");
+                        break;
+                    }
+                    else
+                    {
+                        DisplayMessage("Please enter your new email");
+                    }
                 }
                 else
                 {
-                    DisplayMessage("Please enter your new email");
+                    DisplayMessage("The contact was not found, double-check your spelling..");
                 }
-
             }
             else
             {
