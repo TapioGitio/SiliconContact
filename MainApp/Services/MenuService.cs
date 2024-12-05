@@ -87,11 +87,11 @@ public class MenuService(IContactService contactService) : IMenuService
 
         if (exists)
         {
-            DisplayMessage("Contact was created!");
+            DisplayMessage("\nContact was created!");
         }
         else
         {
-            DisplayMessage("Could NOT add the contact!");
+            DisplayMessage("\nCould NOT add the contact!");
         }
 
     }
