@@ -29,24 +29,24 @@ public class MenuService(IContactService contactService) : IMenuService
             {
                 switch (menuChoice)
                 {
-                    case 1:
-                        AddContact();
-                        break;
-                    case 2:
-                        DisplayContacts();
-                        break;
-                    case 3:
-                        UpdateContact();
-                        break;
-                    case 4:
-                        DeleteContacts();
-                        break;
-                    case 5:
-                        ExitApplication();
-                        break;
-                    default:
-                        DisplayMessage("Wrong choice! Enter a number between 1 and 5.");
-                        break;
+                case 1:
+                    AddContact();
+                    break;
+                case 2:
+                    DisplayContacts();
+                    break;
+                case 3:
+                    UpdateContact();
+                    break;
+                case 4:
+                    DeleteContacts();
+                    break;
+                case 5:
+                    ExitApplication();
+                    break;
+                default:
+                    DisplayMessage("Wrong choice! Enter a number between 1 and 5.");
+                    break;
                 }
             }
             else
@@ -154,7 +154,7 @@ public class MenuService(IContactService contactService) : IMenuService
                 }
                 else
                 {
-                    DisplayMessage("\nThe contact was not found, double-check your spelling..");
+                    DisplayMessage("\nThe contact was not found.");
                 }
             }
             else
@@ -175,7 +175,6 @@ public class MenuService(IContactService contactService) : IMenuService
 
             if (string.IsNullOrWhiteSpace(answer))
             {
-
                 DisplayMessage("You have to enter [y] or [n]");
             }
             else if (answer == "y")
