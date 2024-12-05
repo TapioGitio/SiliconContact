@@ -32,6 +32,7 @@ public class StorageService : IStorageService
 
             File.WriteAllText(_filePath, json);
         }
+
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
@@ -54,6 +55,7 @@ public class StorageService : IStorageService
             return list ?? [];
 
         }
+
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
@@ -70,6 +72,7 @@ public class StorageService : IStorageService
                 File.Delete(_filePath);
             }
         }
+
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);

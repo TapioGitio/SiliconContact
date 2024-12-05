@@ -154,7 +154,7 @@ public class MenuService(IContactService contactService) : IMenuService
                 }
                 else
                 {
-                    DisplayMessage("\nThe contact was not found.");
+                    DisplayMessage($"\nCould not find {input} in the storage.");
                 }
             }
             else
@@ -186,7 +186,7 @@ public class MenuService(IContactService contactService) : IMenuService
                 }
                 else
                 {
-                    DisplayMessage("\nThe storage was empty!");
+                    DisplayMessage("\nThe storage is empty!");
                 }
             }
             else if (answer == "n")
