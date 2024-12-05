@@ -1,12 +1,13 @@
 ﻿using Business.Factories;
+using Business.Interfaces;
 using Business.Models;
 using Business.Services;
 using MainApp.Interfaces;
 
 namespace MainApp.Services;
-public class MenuService(ContactService contactService) : IMenuService
+public class MenuService(IContactService contactService) : IMenuService
 {
-    private readonly ContactService _contactService = contactService;
+    private readonly IContactService _contactService = contactService;
     public void StartMenu()
     {
 

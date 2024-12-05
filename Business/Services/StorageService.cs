@@ -65,7 +65,10 @@ public class StorageService : IStorageService
     {
         try
         {
-            File.WriteAllText(_filePath, string.Empty);
+            if (File.Exists(_filePath)) 
+            { 
+                File.Delete(_filePath);
+            }
         }
         catch (Exception ex)
         {

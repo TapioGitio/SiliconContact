@@ -5,10 +5,10 @@ using System.Diagnostics;
 
 namespace Business.Services;
 
-public class ContactService(StorageService storageService) : IContactService
+public class ContactService(IStorageService storageService) : IContactService
 {
     private List<ContactEntity> _contacts = [];
-    private readonly StorageService _storageService = storageService;
+    private readonly IStorageService _storageService = storageService;
 
     public bool Add(ContactRegistrationForm contactForm)
     {
@@ -29,7 +29,7 @@ public class ContactService(StorageService storageService) : IContactService
 
     public IEnumerable<Contact> Display()
     {
-        List<Contact> userFriendly = new List<Contact>();
+        List<Contact> userFriendly = [];
 
         try
         {
