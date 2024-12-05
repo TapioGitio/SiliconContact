@@ -7,7 +7,7 @@ namespace Business.Interfaces
         bool Add(ContactRegistrationForm contactForm);
         IEnumerable<Contact> Display();
         bool ContactExists(string contactName);
-        void Remove();
+        bool Remove();
         bool Update(string contactName, string updatedEmail);
     }
 }

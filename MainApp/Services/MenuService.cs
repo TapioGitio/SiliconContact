@@ -174,9 +174,15 @@ public class MenuService(IContactService contactService) : IMenuService
             }
             else if (answer == "y")
             {
-                _contactService.Remove();
-                DisplayMessage("\nThe contacts has been removed!");
-                return;
+                if(_contactService.Remove())
+                {
+                    DisplayMessage("\nThe contacts has been removed!");
+                    return;
+                }
+                else
+                {
+                    DisplayMessage("\nThe storage was empty!");
+                }
             }
             else if (answer == "n")
             {

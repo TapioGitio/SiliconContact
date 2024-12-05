@@ -29,7 +29,7 @@ public class ContactService(IStorageService storageService) : IContactService
 
     public IEnumerable<Contact> Display()
     {
-        List<Contact> userFriendly = [];
+        List<Contact> displayFriendly = [];
 
         try
         {
@@ -38,9 +38,9 @@ public class ContactService(IStorageService storageService) : IContactService
             foreach (ContactEntity contactEntity in _contacts)
             {
                 Contact contact = ContactFactory.Create(contactEntity);
-                userFriendly.Add(contact);
+                displayFriendly.Add(contact);
             }
-            return userFriendly;
+            return displayFriendly;
         }
         catch (Exception ex)
         {
@@ -76,12 +76,33 @@ public class ContactService(IStorageService storageService) : IContactService
 
     public bool ContactExists(string contactName)
     {
-        return _contacts.Any(x => x.FirstName.Equals(contactName, StringComparison.OrdinalIgnoreCase));
+        try
+        {
+            return _contacts.Any(x => x.FirstName.Equals(contactName, StringComparison.OrdinalIgnoreCase));
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return false;
+        }
     }
 
-    public void Remove()
+    public bool Remove()
     {
-        _contacts.Clear();
-        _storageService.DeleteContactsFromStorage();
+        try
+        {
+            if (_contacts.Count != 0)
+            {
+                _storageService.DeleteContactsFromStorage();
+                return true;
+            }
+            return false;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return false;
+        }
+
     }
 }
