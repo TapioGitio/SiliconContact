@@ -94,6 +94,7 @@ public class ContactService(IStorageService storageService) : IContactService
             if (_contacts.Count != 0)
             {
                 _storageService.DeleteContactsFromStorage();
+                _contacts.Clear();
                 return true;
             }
             return false;

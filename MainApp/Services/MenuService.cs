@@ -101,6 +101,12 @@ public class MenuService(IContactService contactService) : IMenuService
 
         var contactList = _contactService.Display();
 
+        if (!contactList.Any())
+        {
+            DisplayMessage("No contacts was found!");
+            return;
+        }
+
         foreach (Contact contact in contactList)
         {
             Console.WriteLine($"{"Id: ",-5}{contact.Id}");
@@ -109,7 +115,7 @@ public class MenuService(IContactService contactService) : IMenuService
             Console.WriteLine($"{"Email: ",-5}{contact.Email}");
             Console.WriteLine("");
         }
-
+        
         Console.ReadKey();
     }
 
