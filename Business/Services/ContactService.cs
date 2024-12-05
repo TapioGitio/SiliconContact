@@ -1,29 +1,30 @@
 ﻿using Business.Factories;
+using Business.Interfaces;
 using Business.Models;
 using System.Diagnostics;
 
 namespace Business.Services;
 
-public class ContactService(StorageService storageService)
+public class ContactService(StorageService storageService) : IContactService
 {
     private List<ContactEntity> _contacts = [];
     private readonly StorageService _storageService = storageService;
 
     public bool Add(ContactRegistrationForm contactForm)
     {
-       try
-       {
+        try
+        {
             ContactEntity contactEntity = ContactFactory.Create(contactForm);
 
             _contacts.Add(contactEntity);
             _storageService.SaveContactsToStorage(_contacts);
             return true;
-       }
-       catch (Exception ex)
-       {
+        }
+        catch (Exception ex)
+        {
             Debug.WriteLine(ex.Message);
             return false;
-       }
+        }
     }
 
     public IEnumerable<Contact> Display()
@@ -73,10 +74,10 @@ public class ContactService(StorageService storageService)
         }
     }
 
-    public bool IfContactExists(string contactName)
+    public bool ContactExists(string contactName)
     {
         return _contacts.Any(x => x.FirstName.Equals(contactName, StringComparison.OrdinalIgnoreCase));
-    }   
+    }
 
     public void Remove()
     {

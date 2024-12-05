@@ -128,7 +128,7 @@ public class MenuService(ContactService contactService) : IMenuService
             if (!string.IsNullOrWhiteSpace(input))
             {
 
-                if (_contactService.IfContactExists(input))
+                if (_contactService.ContactExists(input))
                 {
 
                     Console.Write($"\n{input}, please enter your new email: ");

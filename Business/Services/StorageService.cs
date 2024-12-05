@@ -1,10 +1,11 @@
-﻿using Business.Models;
+﻿using Business.Interfaces;
+using Business.Models;
 using System.Diagnostics;
 using System.Text.Json;
 
 namespace Business.Services;
 
-public class StorageService
+public class StorageService : IStorageService
 {
     private readonly string _directoryPath;
     private readonly string _filePath;
@@ -41,7 +42,7 @@ public class StorageService
     {
         try
         {
-            if(!File.Exists(_filePath))
+            if (!File.Exists(_filePath))
             {
                 return [];
             }
