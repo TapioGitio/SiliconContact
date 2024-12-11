@@ -10,12 +10,30 @@ public class ContactService(IStorageService storageService) : IContactService
     private List<ContactEntity> _contacts = [];
     private readonly IStorageService _storageService = storageService;
 
-    public bool Add(ContactRegistrationForm contactForm)
+    public bool AddContact(ContactRegistrationForm contactForm)
     {
         try
         {
-            ContactEntity contactEntity = ContactFactory.Create(contactForm);
+            var contactEntity = ConvertToContactEntity(contactForm);
 
+            return SaveContact(contactEntity);
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+            return false;
+        }
+    }
+
+    public ContactEntity ConvertToContactEntity(ContactRegistrationForm contactForm)
+    {
+        return ContactFactory.Create(contactForm);
+    }
+
+    public bool SaveContact(ContactEntity contactEntity)
+    {
+        try
+        {
             _contacts.Add(contactEntity);
             _storageService.SaveContactsToStorage(_contacts);
             return true;

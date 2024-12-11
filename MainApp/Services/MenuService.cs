@@ -83,7 +83,7 @@ public class MenuService(IContactService contactService) : IMenuService
         Console.Write("Enter your city: ");
         contactForm.City = Console.ReadLine()!;
 
-        bool exists = _contactService.Add(contactForm);
+        bool exists = _contactService.AddContact(contactForm);
 
         if (exists)
         {

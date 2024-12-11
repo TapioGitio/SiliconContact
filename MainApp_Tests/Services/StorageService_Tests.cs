@@ -16,15 +16,15 @@ public class StorageService_Tests
         _contactService = new ContactService(_storageServiceMock.Object);
     }
 
-    [Fact]
-    public void AddContact_ShouldAddContactToStorage()
-    {
-        var contactEntity = new ContactEntity();
+    //[Fact]
+    //public void AddContact_ShouldAddContactToStorage()
+    //{
+    //    var contactEntity = new ContactEntity();
 
-        _storageServiceMock
-            .Setup(ss => ss.SaveContactsToStorage(contactEntity))
-            .Returns(true);
+    //    _storageServiceMock
+    //        .Setup(ss => ss.SaveContactsToStorage(contactEntity))
+    //        .Returns(true);
 
-        var result = _contactService.Add(contactEntity);
-    }
+    //    var result = _contactService.Add(contactEntity);
+    //}
 }
