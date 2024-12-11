@@ -21,10 +21,11 @@ public class ContactService_Tests
     {
         var contactRegFrom = new ContactRegistrationForm();
 
-        _storageServiceMock
-            .Setup(ss => ss.SaveContactsToStorage(It.IsAny<string>()))
-            .Returns(true);
 
-        var result = _contactService.Add(contactRegFrom);
+
+        _contactServiceMock
+            .Setup(ss => ss.Add(contactRegFrom)
+            .Returns();
+
     }
 }
