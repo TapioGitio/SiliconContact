@@ -18,7 +18,7 @@ public class StorageService : IStorageService
         _jsonSerializerOption = new JsonSerializerOptions { WriteIndented = true };
     }
 
-    public void SaveContactsToStorage(List<ContactEntity> contactEntity)
+    public bool SaveContactsToStorage(List<ContactEntity> contactEntity)
     {
         try
         {
@@ -31,12 +31,14 @@ public class StorageService : IStorageService
 
 
             File.WriteAllText(_filePath, json);
+            return true;
         }
 
         catch (Exception ex)
         {
             Debug.WriteLine(ex.Message);
         }
+        return false;
     }
 
     public List<ContactEntity> LoadContactsFromStorage()

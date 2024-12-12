@@ -8,7 +8,7 @@ namespace MainApp_Tests.Services;
 public class ContactService_Tests
 {
     private readonly Mock<IStorageService> _storageServiceMock;
-    private readonly ContactService _contactService;
+    private readonly IContactService _contactService;
 
     public ContactService_Tests()
     {
@@ -17,7 +17,7 @@ public class ContactService_Tests
     }
 
     [Fact]
-    public void CreateContactEntity_ShouldConvertContactFormToEnity()
+    public void CreateContactEntity_ShouldConvertContactFormToEntity()
     {
         var crf = new ContactRegistrationForm()
         {
@@ -38,7 +38,9 @@ public class ContactService_Tests
     [Fact]
     public void AddContact_ShouldConvertToContactEntity_AndSaveToStorage()
     {
-        var crf = new ContactRegistrationForm
+
+        var crf = new ContactRegistrationForm()
+        
         {
             FirstName = "Kalle",
             Email = "Kalle@domain.com"
