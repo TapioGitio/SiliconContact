@@ -15,8 +15,8 @@ public class StorageService_Tests
         _storageServiceMock = new Mock<IStorageService>();
         _contactService = new ContactService(_storageServiceMock.Object);
     }
-
-    //[Fact]
+    //
+    //[Fact] 
     //public void AddContact_ShouldAddContactToStorage()
     //{
     //    var contactEntity = new ContactEntity();
