@@ -14,7 +14,7 @@ public class MenuService(IContactService contactService) : IMenuService
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("Welcome to the Silicon Contact App!");
+            Console.WriteLine("-- Welcome to the Silicon Contact App! --");
             Console.WriteLine(
                 "" + "\n" +
                 "Press [1] to ADD a contact. \n" +
@@ -64,20 +64,20 @@ public class MenuService(IContactService contactService) : IMenuService
 
         ContactRegistrationForm contactForm = ContactFactory.Create();
 
-        contactForm.FirstName = QuestionAndValidate("Enter first name: ", nameof(ContactRegistrationForm.FirstName));
-        contactForm.LastName = QuestionAndValidate("Enter last name: ", nameof(ContactRegistrationForm.LastName));
-        contactForm.Email = QuestionAndValidate("Enter your email-address: ", nameof(ContactRegistrationForm.Email));
-        contactForm.PhoneNumber = QuestionAndValidate("Enter your phone number (optional): ", nameof(ContactRegistrationForm.PhoneNumber));
-        contactForm.Address = QuestionAndValidate("Enter your Address (optional): ", nameof(ContactRegistrationForm.Address));
-        contactForm.PostalCode = QuestionAndValidate("Enter your postal code (optional): ", nameof(ContactRegistrationForm.PostalCode));
-        contactForm.City = QuestionAndValidate("Enter your city (optional): ", nameof(ContactRegistrationForm.City));
+        contactForm.FirstName = ValidationProcess("Enter first name: ", nameof(ContactRegistrationForm.FirstName));
+        contactForm.LastName = ValidationProcess("Enter last name: ", nameof(ContactRegistrationForm.LastName));
+        contactForm.Email = ValidationProcess("Enter your email-address: ", nameof(ContactRegistrationForm.Email));
+        contactForm.PhoneNumber = ValidationProcess("Enter your phone number (optional): ", nameof(ContactRegistrationForm.PhoneNumber));
+        contactForm.Address = ValidationProcess("Enter your Address (optional): ", nameof(ContactRegistrationForm.Address));
+        contactForm.PostalCode = ValidationProcess("Enter your postal code (optional): ", nameof(ContactRegistrationForm.PostalCode));
+        contactForm.City = ValidationProcess("Enter your city (optional): ", nameof(ContactRegistrationForm.City));
 
         _contactService.AddContact(contactForm);
         Console.WriteLine();
         DisplayMessage("The creation of the contact was successful!");
     }
 
-    public string QuestionAndValidate(string prompt, string propertyName)
+    public string ValidationProcess(string prompt, string propertyName)
     {
         while (true)
         {
@@ -142,7 +142,7 @@ public class MenuService(IContactService contactService) : IMenuService
                 if (_contactService.ContactExists(input))
                 {
                     
-                    newEmail = QuestionAndValidate($"{input} enter your new email: ", nameof(ContactRegistrationForm.Email));
+                    newEmail = ValidationProcess($"{input} enter your new email: ", nameof(ContactRegistrationForm.Email));
 
                     if (!string.IsNullOrWhiteSpace(newEmail))
                     {
