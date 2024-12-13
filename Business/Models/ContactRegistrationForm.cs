@@ -1,15 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.IO.Compression;
 
 namespace Business.Models;
 
 public class ContactRegistrationForm
 {
     [Required(ErrorMessage = "You have to enter first name")]
-    [MinLength(2, ErrorMessage = "Atleast two letters  please")]
+    [RegularExpression(@"^[a-zA-Z]{2,}$", ErrorMessage = "Atleast two letters  please")]
     public string FirstName { get; set; } = null!;
 
     [Required(ErrorMessage = "You have to enter last name")]
-    [MinLength(2, ErrorMessage = "Atleast two letters  please")]
+    [RegularExpression(@"^[a-zA-Z]{2,}$", ErrorMessage = "Atleast two letters  please")]
     public string LastName { get; set; } = null!;
 
     [Required(ErrorMessage = "You have to enter your email")]
