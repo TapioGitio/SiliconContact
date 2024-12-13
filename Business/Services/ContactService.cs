@@ -16,7 +16,8 @@ public class ContactService(IStorageService storageService) : IContactService
         {
             var contactEntity = ConvertToContactEntity(contactForm);
 
-            return SaveContact(contactEntity);
+            SaveContact(contactEntity);
+            return true;
         }
         catch (Exception ex)
         {
