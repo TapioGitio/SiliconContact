@@ -64,9 +64,9 @@ public class MenuService(IContactService contactService) : IMenuService
 
         ContactRegistrationForm contactForm = ContactFactory.Create();
 
-        contactForm.FirstName = ValidationProcess("Enter first name: ", nameof(ContactRegistrationForm.FirstName));
-        contactForm.LastName = ValidationProcess("Enter last name: ", nameof(ContactRegistrationForm.LastName));
-        contactForm.Email = ValidationProcess("Enter your email-address: ", nameof(ContactRegistrationForm.Email));
+        contactForm.FirstName = ValidationProcess("Enter your first name: ", nameof(ContactRegistrationForm.FirstName));
+        contactForm.LastName = ValidationProcess("Enter your last name: ", nameof(ContactRegistrationForm.LastName));
+        contactForm.Email = ValidationProcess("Enter your email address: ", nameof(ContactRegistrationForm.Email));
         contactForm.PhoneNumber = ValidationProcess("Enter your phone number (optional): ", nameof(ContactRegistrationForm.PhoneNumber));
         contactForm.Address = ValidationProcess("Enter your Address (optional): ", nameof(ContactRegistrationForm.Address));
         contactForm.PostalCode = ValidationProcess("Enter your postal code (optional): ", nameof(ContactRegistrationForm.PostalCode));
