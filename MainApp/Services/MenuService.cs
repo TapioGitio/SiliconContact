@@ -2,6 +2,7 @@
 using Business.Interfaces;
 using Business.Models;
 using MainApp.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace MainApp.Services;
 public class MenuService(IContactService contactService) : IMenuService
@@ -59,45 +60,46 @@ public class MenuService(IContactService contactService) : IMenuService
     public void AddContact()
     {
         Console.Clear();
+        Console.WriteLine("-- Contact Creation --");
 
         ContactRegistrationForm contactForm = ContactFactory.Create();
 
-        Console.Write("Enter your firstname: ");
-        contactForm.FirstName = Console.ReadLine()!;
+        contactForm.FirstName = QuestionAndValidate("Enter first name: ", nameof(ContactRegistrationForm.FirstName));
+        contactForm.LastName = QuestionAndValidate("Enter last name: ", nameof(ContactRegistrationForm.LastName));
+        contactForm.Email = QuestionAndValidate("Enter your email-address: ", nameof(ContactRegistrationForm.Email));
+        contactForm.PhoneNumber = QuestionAndValidate("Enter your phone number (optional): ", nameof(ContactRegistrationForm.PhoneNumber));
+        contactForm.Address = QuestionAndValidate("Enter your Address (optional): ", nameof(ContactRegistrationForm.Address));
+        contactForm.PostalCode = QuestionAndValidate("Enter your postal code (optional): ", nameof(ContactRegistrationForm.PostalCode));
+        contactForm.City = QuestionAndValidate("Enter your city (optional): ", nameof(ContactRegistrationForm.City));
 
-        Console.Write("Enter your lastname: ");
-        contactForm.LastName = Console.ReadLine()!;
+        _contactService.AddContact(contactForm);
+        Console.WriteLine();
+        DisplayMessage("The creation of the contact was successful!");
+    }
 
-        Console.Write("Enter your email: ");
-        contactForm.Email = Console.ReadLine()!;
-
-        Console.Write("Enter your phone-number: ");
-        contactForm.PhoneNumber = Console.ReadLine()!;
-
-        Console.Write("Enter your Address: ");
-        contactForm.Address = Console.ReadLine()!;
-
-        Console.Write("Enter your postal-code: ");
-        contactForm.PostalCode = Console.ReadLine()!;
-
-        Console.Write("Enter your city: ");
-        contactForm.City = Console.ReadLine()!;
-
-        bool exists = _contactService.AddContact(contactForm);
-
-        if (exists)
+    public string QuestionAndValidate(string prompt, string propertyName)
+    {
+        while (true)
         {
-            DisplayMessage("\nContact was created!");
-        }
-        else
-        {
-            DisplayMessage("\nCould NOT add the contact!");
-        }
+            Console.WriteLine();
+            Console.Write(prompt);
+            var input = Console.ReadLine()!.Trim();
 
+            var results = new List<ValidationResult>();
+            var context = new ValidationContext(new ContactRegistrationForm()) { MemberName = propertyName };
+
+            if (Validator.TryValidateProperty(input, context, results))
+                return input;
+
+            Console.WriteLine($"{results[0].ErrorMessage}, try again...");
+        } 
     }
     public void DisplayContacts()
     {
         Console.Clear();
+        Console.WriteLine("-- Contact Storage --");
+        Console.WriteLine();
+
 
         var contactList = _contactService.Display();
 
@@ -126,6 +128,9 @@ public class MenuService(IContactService contactService) : IMenuService
         while (run)
         {
             Console.Clear();
+            Console.WriteLine("-- Contact Update --");
+            Console.WriteLine();
+
             Console.Write("Write your firstname to be able to change your email: ");
 
             string input = Console.ReadLine()!.Trim().ToLower();
@@ -136,9 +141,8 @@ public class MenuService(IContactService contactService) : IMenuService
 
                 if (_contactService.ContactExists(input))
                 {
-
-                    Console.Write($"\n{input}, please enter your new email: ");
-                    newEmail = Console.ReadLine()!;
+                    
+                    newEmail = QuestionAndValidate($"{input} enter your new email: ", nameof(ContactRegistrationForm.Email));
 
                     if (!string.IsNullOrWhiteSpace(newEmail))
                     {
@@ -169,6 +173,8 @@ public class MenuService(IContactService contactService) : IMenuService
         while (true)
         {
             Console.Clear();
+            Console.WriteLine("-- Contact Deletion --");
+            Console.WriteLine();
 
             Console.WriteLine("Do you want to delete all the contacts? (y/n)");
             string answer = Console.ReadLine()!.ToLower().Trim();
@@ -205,6 +211,9 @@ public class MenuService(IContactService contactService) : IMenuService
         while (true)
         {
             Console.Clear();
+            Console.WriteLine("-- Exit --");
+            Console.WriteLine();
+
             Console.WriteLine("Are you sure you want to exit? (y/n)");
 
             string input = Console.ReadLine()!.Trim().ToLower();
