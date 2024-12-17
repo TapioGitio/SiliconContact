@@ -17,7 +17,7 @@ public class StorageService_Tests
     [Fact]
     public void SaveContactsToStorage_ShouldAddContactToStorage()
     {
-        var contactList = new List<ContactEntity>()
+        var ce = new List<ContactEntity>()
         {
             new ContactEntity{ FirstName = "Test", Email = "scadooble@gmail.com"}
         };
@@ -26,10 +26,10 @@ public class StorageService_Tests
             .Setup(ss => ss.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()))
             .Returns(true);
 
-        var result = _storageServiceMock.Object.SaveContactsToStorage(contactList);
+        var result = _storageServiceMock.Object.SaveContactsToStorage(ce);
 
         Assert.True(result);
-        Assert.Single(contactList);
+        Assert.Single(ce);
         _storageServiceMock.Verify(ss => ss.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()), Times.Once);
 
     }
