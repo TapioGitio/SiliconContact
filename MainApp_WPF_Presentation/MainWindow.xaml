@@ -3,10 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MainApp_WPF_Presentation"
+        xmlns:local="clr-namespace:MainApp_WPF_Presentation" 
+        
+        xmlns:viewmodels="clr-namespace:MainApp_WPF_Presentation.ViewModels" 
+        xmlns:views="clr-namespace:MainApp_WPF_Presentation.Views" 
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
+        WindowStartupLocation="CenterScreen"
+        
         mc:Ignorable="d"
         Title="Contact Service" Height="450" Width="600">
-    <Grid>
-
+    <Grid Margin="15">
+        <ContentControl Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:ContactDisplayViewModel}">
+                    <views:ContactDisplayView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ContactAddViewModel}">
+                    <views:ContactAddView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ContactUpdateViewModel}">
+                    <views:ContactUpdateView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ContactDeleteViewModel}">
+                    <views:ContactDeleteView/>
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
     </Grid>
 </Window>
