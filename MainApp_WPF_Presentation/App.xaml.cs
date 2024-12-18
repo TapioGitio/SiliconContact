@@ -24,7 +24,7 @@ public partial class App : Application
             services.AddTransient<ContactDeleteViewModel>();
 
             services.AddTransient<ContactDisplayView>();
-            services.AddTransient<ContactDeleteView>();
+            services.AddTransient<ContactAddView>();
             services.AddTransient<ContactUpdateView>();
             services.AddTransient<ContactDeleteView>();
 

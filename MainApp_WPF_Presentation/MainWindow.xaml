@@ -11,9 +11,26 @@
         WindowStartupLocation="CenterScreen"
         
         mc:Ignorable="d"
-        Title="Contact Service" Height="450" Width="600">
-    <Grid Margin="15">
-        <ContentControl Content="{Binding CurrentViewModel}">
+        Title="Silicon Contact" Height="450" Width="600">
+    <Grid Background="Lavender">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Margin="14" FontFamily="Calibri" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center">
+          Main Menu
+        </TextBlock>
+        <StackPanel Grid.Row="1">
+            
+            <Button Style="{StaticResource MenuButtons}" Content="Add a contact"/>
+            <Button Style="{StaticResource MenuButtons}" Content="Show storage"/>
+            <Button Style="{StaticResource MenuButtons}" Content="Change email"/>
+            <Button Style="{StaticResource MenuButtons}" Content="Delete storage"/>
+            
+        </StackPanel>
+        <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type viewmodels:ContactDisplayViewModel}">
                     <views:ContactDisplayView/>
@@ -29,5 +46,6 @@
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
+
     </Grid>
 </Window>
