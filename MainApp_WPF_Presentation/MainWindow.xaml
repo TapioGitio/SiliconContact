@@ -7,16 +7,17 @@
         
         xmlns:viewmodels="clr-namespace:MainApp_WPF_Presentation.ViewModels" 
         xmlns:views="clr-namespace:MainApp_WPF_Presentation.Views" 
+        
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         WindowStartupLocation="CenterScreen"
         
         mc:Ignorable="d"
         Title="Silicon Contact" Height="450" Width="600">
+    
     <Grid Background="Lavender">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Margin="14" FontFamily="Calibri" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center">
@@ -26,15 +27,19 @@
             
             <Button Style="{StaticResource MenuButtons}" 
                     Content="Add contact"
+                    Command="{Binding SwingToAddPageCommand}"
                     />
             <Button Style="{StaticResource MenuButtons}" 
                     Content="Change email"
+                    Command="{Binding SwingToUpdatePageCommand}"
                     />
             <Button Style="{StaticResource MenuButtons}" 
                     Content="Show storage"
+                    Command="{Binding SwingToShowPageCommand}"
                     />
             <Button Style="{StaticResource MenuButtons}" 
                     Content="Delete storage"
+                    Command="{Binding SwingToDeletePageCommand}"
                     />
             
         </StackPanel>

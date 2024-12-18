@@ -11,7 +11,11 @@ namespace MainApp_WPF_Presentation;
 
 public partial class App : Application
 {
-    IHost _host = Host.CreateDefaultBuilder()
+    private IHost _host;
+
+    public App()
+    {
+        _host = Host.CreateDefaultBuilder()
 
         .ConfigureServices(services =>
         {
@@ -33,11 +37,11 @@ public partial class App : Application
 
         })
         .Build();
+    }
+
 
     protected override void OnStartup(StartupEventArgs e)
     {
-        var mainViewModel = _host.Services.GetRequiredService<MainViewModel>();
-        mainViewModel.CurrentViewModel = _host.Services.GetRequiredService<ContactDisplayViewModel>();
 
         var mainWindow = _host.Services.GetRequiredService<MainWindow>();
         mainWindow.Show();
