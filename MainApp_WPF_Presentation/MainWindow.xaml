@@ -45,6 +45,9 @@
         </StackPanel>
         <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:MainViewModel}">
+                    
+                </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodels:ContactAddViewModel}">
                     <views:ContactAddView/>
                 </DataTemplate>
