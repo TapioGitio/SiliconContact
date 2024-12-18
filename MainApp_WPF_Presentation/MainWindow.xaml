@@ -24,7 +24,7 @@
           Main Menu
         </TextBlock>
         <StackPanel Grid.Row="1">
-            
+
             <Button Style="{StaticResource MenuButtons}" 
                     Content="Add contact"
                     Command="{Binding SwingToAddPageCommand}"
