@@ -24,22 +24,30 @@
         </TextBlock>
         <StackPanel Grid.Row="1">
             
-            <Button Style="{StaticResource MenuButtons}" Content="Add a contact"/>
-            <Button Style="{StaticResource MenuButtons}" Content="Show storage"/>
-            <Button Style="{StaticResource MenuButtons}" Content="Change email"/>
-            <Button Style="{StaticResource MenuButtons}" Content="Delete storage"/>
+            <Button Style="{StaticResource MenuButtons}" 
+                    Content="Add contact"
+                    />
+            <Button Style="{StaticResource MenuButtons}" 
+                    Content="Change email"
+                    />
+            <Button Style="{StaticResource MenuButtons}" 
+                    Content="Show storage"
+                    />
+            <Button Style="{StaticResource MenuButtons}" 
+                    Content="Delete storage"
+                    />
             
         </StackPanel>
         <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
-                <DataTemplate DataType="{x:Type viewmodels:ContactDisplayViewModel}">
-                    <views:ContactDisplayView/>
-                </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodels:ContactAddViewModel}">
                     <views:ContactAddView/>
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodels:ContactUpdateViewModel}">
                     <views:ContactUpdateView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ContactDisplayViewModel}">
+                    <views:ContactDisplayView/>
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodels:ContactDeleteViewModel}">
                     <views:ContactDeleteView/>

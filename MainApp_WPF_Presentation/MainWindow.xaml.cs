@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using MainApp_WPF_Presentation.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,8 +14,9 @@ namespace MainApp_WPF_Presentation;
 
 public partial class MainWindow : Window
 {
-    public MainWindow()
+    public MainWindow(MainViewModel viewModel)
     {
         InitializeComponent();
+        DataContext = viewModel;
     }
 }
