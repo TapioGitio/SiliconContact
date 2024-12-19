@@ -5,7 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MainApp_WPF_Presentation.Views"
              xmlns:viewModels="clr-namespace:MainApp_WPF_Presentation.ViewModels"
+             xmlns:models="clr-namespace:Business.Models;assembly=Business"
              d:DataContext="{d:DesignInstance Type=viewModels:ContactDisplayViewModel}"
+             
+             
              mc:Ignorable="d" 
              Background="Lavender"
              d:DesignHeight="450" d:DesignWidth="800">
@@ -13,13 +16,25 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         
         <StackPanel Grid.Row="0" Width="200">
             <TextBlock Text="{Binding Headline}" Style="{StaticResource headline}"/>
         </StackPanel>
 
-
+        <ListView Grid.Row="1" ItemsSource="{Binding Contacts}" Margin="50 0 50 20">
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="models:Contact">
+                    <StackPanel>
+                        <TextBlock Text="{Binding FirstName}" />
+                        <TextBlock Text="{Binding LastName}" />
+                        <TextBlock Text="{Binding Email}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
         <Button Grid.Row="2" 
                Content="Back"
                Style="{StaticResource MenuButtons}"

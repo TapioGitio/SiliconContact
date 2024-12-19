@@ -15,7 +15,6 @@ public partial class MainViewModel : ObservableObject
     private string _headline = "Main Menu";
 
 
-
 [RelayCommand]
     private void SwingToAddPage()
     {

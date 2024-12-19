@@ -22,17 +22,18 @@
             <TextBlock Text="{Binding Headline}" Style="{StaticResource headline}"/>
 
             <Label Content="First name"/>
-            <TextBox />
+            <TextBox Text="{Binding RegForm.FirstName}" />
             <Label Content="Last name" />
-            <TextBox />
+            <TextBox Text="{Binding RegForm.LastName}"/>
             <Label Content="Email" />
-            <TextBox />
+            <TextBox Text="{Binding RegForm.Email}" />
         </StackPanel>
 
         <Button Grid.Row="1"
                 Margin="0 40 0 10"
                 Content="Save"
                 Style="{StaticResource MenuButtons}"
+                Command="{Binding SaveCommand}"
                 />
         <Button Grid.Row="2" 
                 Content="Back"
