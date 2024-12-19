@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MainApp_WPF_Presentation.Views"
+             Background="Lavender"
              
              xmlns:viewModels="clr-namespace:MainApp_WPF_Presentation.ViewModels"
              d:DataContext="{d:DesignInstance Type=viewModels:ContactAddViewModel}"
@@ -14,13 +15,25 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" Width="200">
+            <TextBlock Text="{Binding Headline}" Style="{StaticResource headline}"/>
+
+            <Label Content="First name"/>
+            <TextBox />
+            <Label Content="Last name" />
+            <TextBox />
+            <Label Content="Email" />
+            <TextBox />
         </StackPanel>
 
-        <Button />
-        <Button Grid.Row="1" 
+        <Button Grid.Row="1"
+                Content="Save"
+                Style="{StaticResource MenuButtons}"
+                />
+        <Button Grid.Row="2" 
                 Content="Back"
                 Style="{StaticResource MenuButtons}"
                 Command="{Binding SwingHomeCommand}"/>

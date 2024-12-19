@@ -8,6 +8,8 @@ public partial class ContactAddViewModel : ObservableObject
 {
     private readonly IServiceProvider _serviceProvider;
 
+    [ObservableProperty]
+    private string _headline = "Create Contact";
 
     [RelayCommand]
     private void SwingHome()

@@ -11,8 +11,12 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private ObservableObject _currentViewModel = null!;
 
+    [ObservableProperty]
+    private string _headline = "Main Menu";
 
-    [RelayCommand]
+
+
+[RelayCommand]
     private void SwingToAddPage()
     {
         var mainViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
