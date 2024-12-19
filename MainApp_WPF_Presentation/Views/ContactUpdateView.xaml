@@ -4,9 +4,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MainApp_WPF_Presentation.Views"
+             
+             xmlns:viewModels="clr-namespace:MainApp_WPF_Presentation.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewModels:ContactUpdateViewModel}"
+             
              mc:Ignorable="d" 
+             Background="Lavender"
              d:DesignHeight="450" d:DesignWidth="800">
+    
+    
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Width="200">
+            <TextBlock Text="{Binding Headline}" Style="{StaticResource headline}"/>
+
+            <Label Content="Enter first name to change"/>
+            <TextBox />
+   
+        </StackPanel>
+
+        <Button Grid.Row="1"
+                Margin="0 40 0 10"
+                Content="Continue"
+                Style="{StaticResource MenuButtons}"
+                />
+        <Button Grid.Row="2" 
+                Content="Back"
+                Style="{StaticResource MenuButtons}"
+                Command="{Binding SwingHomeCommand}"/>
+
     </Grid>
 </UserControl>
