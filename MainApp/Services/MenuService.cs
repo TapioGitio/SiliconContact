@@ -185,7 +185,7 @@ public class MenuService(IContactService contactService) : IMenuService
             }
             else if (answer == "y")
             {
-                if(_contactService.Remove())
+                if(_contactService.RemoveAll())
                 {
                     DisplayMessage("\nThe contacts has been removed!");
                     return;

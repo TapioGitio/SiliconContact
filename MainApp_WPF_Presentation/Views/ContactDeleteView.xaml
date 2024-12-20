@@ -26,6 +26,7 @@
                 Margin="0 40 0 10"
                 Content="Yes"
                 Style="{StaticResource MenuButtons}"
+                Command="{Binding DeleteCommand}"
                 />
         <Button Grid.Row="2" 
                 Content="No"

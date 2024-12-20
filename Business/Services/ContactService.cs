@@ -106,7 +106,7 @@ public class ContactService(IStorageService storageService) : IContactService
         }
     }
 
-    public bool Remove()
+    public bool RemoveAll()
     {
         try
         {

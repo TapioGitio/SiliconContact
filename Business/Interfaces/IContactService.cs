@@ -11,6 +11,6 @@ namespace Business.Interfaces
         IEnumerable<Contact> Display();
         bool ContactExists(string contactName);
         bool Update(string contactName, string updatedEmail);
-        bool Remove();
+        bool RemoveAll();
     }
 }
