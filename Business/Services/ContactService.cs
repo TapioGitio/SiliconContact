@@ -63,7 +63,7 @@ public class ContactService(IStorageService storageService) : IContactService
         }
         catch (Exception ex)
         {
-            Debug.WriteLine(ex.Message);
+            Debug.WriteLine($"Error loading the list: {ex.Message}");
             return [];
         }
     }
@@ -97,6 +97,7 @@ public class ContactService(IStorageService storageService) : IContactService
     {
         try
         {
+            _contacts = _storageService.LoadContactsFromStorage();
             return _contacts.Any(x => x.FirstName.Equals(contactName, StringComparison.OrdinalIgnoreCase));
         }
         catch (Exception ex)

@@ -24,14 +24,19 @@
             <TextBlock Text="{Binding Headline}" Style="{StaticResource headline}"/>
 
             <Label Content="Enter first name to change"/>
-            <TextBox />
-   
+            <TextBox Text="{Binding NameInput, UpdateSourceTrigger=PropertyChanged}" />
+
+            <Label Content="Enter new email" IsEnabled="{Binding DoTheyExist}" />
+            <TextBox Text="{Binding NewEmail}" IsEnabled="{Binding DoTheyExist}"/>
+
         </StackPanel>
 
         <Button Grid.Row="1"
                 Margin="0 40 0 10"
-                Content="Continue"
+                Content="Change email"
                 Style="{StaticResource MenuButtons}"
+                IsEnabled="{Binding DoTheyExist}"
+                Command="{Binding ChangeEmailCommand}"
                 />
         <Button Grid.Row="2" 
                 Content="Back"

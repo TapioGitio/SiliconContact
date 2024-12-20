@@ -13,7 +13,7 @@ public class StorageService : IStorageService
 
     public StorageService(string directoryPath = "DataStorage", string fileName = "contacts.json")
     {
-        _directoryPath = directoryPath;
+        _directoryPath = Path.Combine(directoryPath);
         _filePath = Path.Combine(_directoryPath, fileName);
         _jsonSerializerOption = new JsonSerializerOptions { WriteIndented = true };
     }
@@ -47,10 +47,12 @@ public class StorageService : IStorageService
         {
             if (!File.Exists(_filePath))
             {
+                Debug.WriteLine("Storage file did not exist");
                 return [];
             }
 
             var json = File.ReadAllText(_filePath);
+            Debug.WriteLine($"Loaded from storage: {json}");
             var list = JsonSerializer.Deserialize<List<ContactEntity>>(json, _jsonSerializerOption);
 
 
