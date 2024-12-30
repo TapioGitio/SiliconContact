@@ -1,7 +1,10 @@
 ﻿using Business.Interfaces;
+using Business.Models;
+using Business.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.ObjectModel;
 
 namespace MainApp_WPF_Presentation.ViewModels;
 
@@ -13,11 +16,28 @@ public partial class ContactDeleteViewModel : ObservableObject
     [ObservableProperty]
     private string _headline = "Are you sure you wish to delete all?";
 
+    [ObservableProperty]
+    private string _errorMessage = "";
+
+    [ObservableProperty]
+    private string _succesMessage = "";
+
+    [ObservableProperty]
+    private ObservableCollection<Contact> _contacts;
 
     [RelayCommand]
     private void Delete()
     {
-        _contactService.RemoveAll();
+        if(Contacts.Any())
+        {
+            _contactService.RemoveAll();
+            SuccesMessage = "Contacts removed succesfully";
+
+        }
+        else
+        {
+            ErrorMessage = "Storage empty, nothing to remove";
+        }
     }
 
     [RelayCommand]

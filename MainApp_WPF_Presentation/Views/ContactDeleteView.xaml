@@ -19,6 +19,8 @@
 
         <StackPanel Grid.Row="0">
             <TextBlock Text="{Binding Headline}" Style="{StaticResource headline}"/>
+            <TextBlock Text="{Binding ErrorMessage}" Style="{StaticResource errorMessage}" />
+            <TextBlock Text="{Binding SuccesMessage}" Style="{StaticResource succesMessage}" />
 
         </StackPanel>
 
@@ -29,7 +31,7 @@
                 Command="{Binding DeleteCommand}"
                 />
         <Button Grid.Row="2" 
-                Content="No"
+                Content="Back"
                 Style="{StaticResource MenuButtons}"
                 Command="{Binding SwingHomeCommand}"/>
 

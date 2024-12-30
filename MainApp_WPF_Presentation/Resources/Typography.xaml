@@ -12,5 +12,24 @@
         
     </Style>
 
+    <Style x:Key="errorMessage" TargetType="TextBlock">
+
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="yaHei" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Foreground" Value="Firebrick" />
+        
+    </Style>
+
+
+    <Style x:Key="succesMessage" TargetType="TextBlock">
+
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="yaHei" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="Foreground" Value="LimeGreen" />
+
+    </Style>
+
 
 </ResourceDictionary>

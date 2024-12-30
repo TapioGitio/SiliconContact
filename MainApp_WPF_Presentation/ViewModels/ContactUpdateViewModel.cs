@@ -42,6 +42,7 @@ public partial class ContactUpdateViewModel : ObservableObject
         if (DoTheyExist)
         {
             _contactService.Update(NameInput, NewEmail);
+            SwingHome();
         }
         else
         {
