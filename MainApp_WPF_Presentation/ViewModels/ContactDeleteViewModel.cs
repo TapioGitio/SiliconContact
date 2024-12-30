@@ -1,6 +1,5 @@
 ﻿using Business.Interfaces;
 using Business.Models;
-using Business.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,10 +19,10 @@ public partial class ContactDeleteViewModel : ObservableObject
     private string _errorMessage = "";
 
     [ObservableProperty]
-    private string _succesMessage = "";
+    private string _successMessage = "";
 
     [ObservableProperty]
-    private ObservableCollection<Contact> _contacts;
+    private ObservableCollection<ContactEntity> _contacts;
 
     [RelayCommand]
     private void Delete()
@@ -31,7 +30,7 @@ public partial class ContactDeleteViewModel : ObservableObject
         if(Contacts.Any())
         {
             _contactService.RemoveAll();
-            SuccesMessage = "Contacts removed succesfully";
+            SuccessMessage = "Contacts removed succesfully";
 
         }
         else
@@ -40,15 +39,36 @@ public partial class ContactDeleteViewModel : ObservableObject
         }
     }
 
+    private void LoadContacts(IStorageService storageService)
+    {
+        try
+        {
+            var loadedContacts = storageService.LoadContactsFromStorage();
+
+            foreach (var contact in loadedContacts)
+            {
+                Contacts.Add(contact);
+            }
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = $"Failed to load contacts: {ex.Message}";
+        }
+
+    }
+
     [RelayCommand]
     private void SwingHome()
     {
         var viewModel = _serviceProvider.GetRequiredService<MainViewModel>();
         viewModel.CurrentViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
     }
-    public ContactDeleteViewModel(IServiceProvider serviceProvider, IContactService contactService)
+    public ContactDeleteViewModel(IServiceProvider serviceProvider, IContactService contactService, IStorageService storageService)
     {
         _serviceProvider = serviceProvider;
         _contactService = contactService;
+        _contacts = new ObservableCollection<ContactEntity>();
+        LoadContacts(storageService);
+
     }
 }

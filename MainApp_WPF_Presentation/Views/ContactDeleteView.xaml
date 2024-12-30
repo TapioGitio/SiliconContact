@@ -20,7 +20,7 @@
         <StackPanel Grid.Row="0">
             <TextBlock Text="{Binding Headline}" Style="{StaticResource headline}"/>
             <TextBlock Text="{Binding ErrorMessage}" Style="{StaticResource errorMessage}" />
-            <TextBlock Text="{Binding SuccesMessage}" Style="{StaticResource succesMessage}" />
+            <TextBlock Text="{Binding SuccessMessage}" Style="{StaticResource successMessage}" />
 
         </StackPanel>
 
