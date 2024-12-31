@@ -16,10 +16,10 @@ public partial class ContactDeleteViewModel : ObservableObject
     private string _headline = "Are you sure you wish to delete all?";
 
     [ObservableProperty]
-    private string _errorMessage = "";
+    private string _errorMessage = null!;
 
     [ObservableProperty]
-    private string _successMessage = "";
+    private string _successMessage = null!;
 
     [ObservableProperty]
     private ObservableCollection<ContactEntity> _contacts;
@@ -31,11 +31,13 @@ public partial class ContactDeleteViewModel : ObservableObject
         {
             _contactService.RemoveAll();
             SuccessMessage = "Contacts removed succesfully";
+            ErrorMessage = null!;
 
         }
         else
         {
             ErrorMessage = "Storage empty, nothing to remove";
+            SuccessMessage = null!;
         }
     }
 
