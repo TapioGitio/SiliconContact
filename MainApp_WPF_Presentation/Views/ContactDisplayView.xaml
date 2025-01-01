@@ -45,6 +45,8 @@
                         <Button Grid.Column="1"
                                 HorizontalAlignment="Right"
                                 Style="{StaticResource DeleteBtn}"
+                                CommandParameter="{Binding}"
+                                Command="{Binding DataContext.DeleteOneCommand, RelativeSource={RelativeSource AncestorType=UserControl} }"
                                 />
                     </Grid>
                 </DataTemplate>

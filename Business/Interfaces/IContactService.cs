@@ -12,5 +12,6 @@ namespace Business.Interfaces
         bool ContactExists(string contactName);
         bool Update(string contactName, string updatedEmail);
         bool RemoveAll();
+        bool RemoveOne(Contact contact);
     }
 }

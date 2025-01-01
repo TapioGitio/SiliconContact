@@ -127,8 +127,27 @@ public class ContactService(IStorageService storageService) : IContactService
 
     }
 
-    public bool RemoveOne(string contactName)
+    public bool RemoveOne(Contact contact)
     {
+        try
+        {
+            var contactEntity = _contacts.FirstOrDefault(x => x.Id == contact.Id);
+            if (contactEntity != null)
+            {
+                _contacts.Remove(contactEntity);
+                _storageService.SaveContactsToStorage(_contacts);
+                return true;
+            }
+            else
+            {
+                Debug.WriteLine("Contact not found");
+            }
+        }
 
+        catch (Exception ex)
+        {
+            Debug.WriteLine(ex.Message);
+        }
+        return false;
     }
 }
