@@ -126,4 +126,9 @@ public class ContactService(IStorageService storageService) : IContactService
         }
 
     }
+
+    public bool RemoveOne(string contactName)
+    {
+
+    }
 }

@@ -31,4 +31,10 @@ public partial class ContactDisplayViewModel : ObservableObject
         var viewModel = _serviceProvider.GetRequiredService<MainViewModel>();
         viewModel.CurrentViewModel = _serviceProvider.GetRequiredService<MainViewModel>();
     }
+
+    [RelayCommand]
+    private void DeleteSpecificContact(Contact contact)
+    {
+        
+    }
 }
