@@ -36,7 +36,11 @@ public partial class ContactDisplayViewModel : ObservableObject
     [RelayCommand]
     private void DeleteOne(Contact contact)
     {
-        _contactService.RemoveOne(contact);
-        Contacts = new ObservableCollection<Contact>();
+
+        if (Contacts.Contains(contact))
+        {
+            _contactService.RemoveOne(contact);
+            Contacts.Remove(contact);
+        }
     }
 }
