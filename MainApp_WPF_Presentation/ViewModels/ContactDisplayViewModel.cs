@@ -36,7 +36,9 @@ public partial class ContactDisplayViewModel : ObservableObject
     [RelayCommand]
     private void DeleteOne(Contact contact)
     {
-
+        //Got help from ai for the IF statement here to trigger the change
+        //to appear as it should, I was at first trying to make a new instanciation
+        //but that made a whole new list instead.
         if (Contacts.Contains(contact))
         {
             _contactService.RemoveOne(contact);
