@@ -7,6 +7,7 @@
         <Setter Property="Background" Value="LightBlue" />
         <Setter Property="FontFamily" Value="Calibri" />
         <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Heavy"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
@@ -19,6 +20,7 @@
                                    Padding="10"
                                    Text="{TemplateBinding Content}"
                                    FontFamily="{TemplateBinding FontFamily}"
+                                   FontWeight="{TemplateBinding FontWeight}"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center">
                         </TextBlock>
