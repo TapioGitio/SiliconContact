@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace MainApp_WPF_Presentation.ViewModels;
 
@@ -47,6 +48,7 @@ public partial class ContactAddViewModel : ObservableObject
         else if (RegForm.HasErrors)
         {
             ErrorMessage = "Encountered an error, please check your spelling";
+            
         }
         else
         {

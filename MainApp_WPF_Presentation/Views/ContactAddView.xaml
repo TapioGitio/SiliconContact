@@ -36,11 +36,13 @@
 
         <StackPanel Grid.Column="0" Grid.Row="1" Margin="20 0 20 0">
             <Label Content="First name*"/>
-            <TextBox Text="{Binding RegForm.FirstName}" />
+            <TextBox Text="{Binding RegForm.FirstName , UpdateSourceTrigger=PropertyChanged}" />
+            
             <Label Content="Last name*" />
-            <TextBox Text="{Binding RegForm.LastName}"/>
+            <TextBox Text="{Binding RegForm.LastName, UpdateSourceTrigger=PropertyChanged}"/>
+            
             <Label Content="Email*" />
-            <TextBox Text="{Binding RegForm.Email}" />
+            <TextBox Text="{Binding RegForm.Email, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1" Margin="20 0 20 0">
