@@ -36,11 +36,17 @@ public partial class ContactAddViewModel : ObservableObject
     [RelayCommand]
     private void Save()
     {
+        RegForm.Validate();
+
         if (_contactService.ContactExists(RegForm.FirstName))
         {
             ErrorMessage = "Contact already exists";
             SuccessMessage = null!;
             return;
+        }
+        else if (RegForm.HasErrors)
+        {
+            ErrorMessage = "Encountered an error, please check your spelling";
         }
         else
         {
