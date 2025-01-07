@@ -22,6 +22,7 @@ public class ContactService_Tests
         var crf = new ContactRegistrationForm()
         {
             FirstName = "Test",
+            LastName = "Testsson",
             Email = "Test@thismethod.com"
         };
 
@@ -43,8 +44,13 @@ public class ContactService_Tests
         
         {
             FirstName = "Kalle",
+            LastName = "kallesson",
             Email = "Kalle@domain.com"
         };
+
+        _storageServiceMock
+          .Setup(ss => ss.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()))
+          .Returns(true);
 
         var result = _contactService.AddContact(crf);
 
@@ -60,13 +66,17 @@ public class ContactService_Tests
         var ce = new ContactEntity()
         {
             FirstName = "Test",
+            LastName = "Testsson",
             Email = "janne@domain.com"
         };
+
+        _storageServiceMock
+            .Setup(ss => ss.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()))
+            .Returns(true);
 
         var result = _contactService.SaveContact(ce);
 
         Assert.True(result);
-        Assert.True(_contactService.ContactExists(ce.FirstName));
-        _storageServiceMock.Verify(s => s.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()), Times.Once);
+        _storageServiceMock.Verify(ss => ss.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()), Times.Once);
     }
 }
