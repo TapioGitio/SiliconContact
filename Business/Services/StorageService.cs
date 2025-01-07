@@ -13,7 +13,7 @@ public class StorageService : IStorageService
 
     public StorageService(string directoryPath = "DataStorage", string fileName = "contacts.json")
     {
-        _directoryPath = Path.Combine(directoryPath);
+        _directoryPath = directoryPath;
         _filePath = Path.Combine(_directoryPath, fileName);
         _jsonSerializerOption = new JsonSerializerOptions { WriteIndented = true };
     }
