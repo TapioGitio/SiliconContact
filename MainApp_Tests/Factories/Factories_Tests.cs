@@ -9,6 +9,8 @@ public class Factories_Tests
     public void ContactRegistrationForm_ShouldCreateAnInstanceOf_ContactRegistrationForm()
     {
         var result = ContactFactory.Create();
+
+        Assert.NotNull(result);
         Assert.IsType<ContactRegistrationForm>(result);
     }
 
@@ -18,6 +20,7 @@ public class Factories_Tests
         ContactRegistrationForm contactRegistrationForm = new();
         var result = ContactFactory.Create(contactRegistrationForm);
 
+        Assert.NotNull(result);
         Assert.IsType<ContactEntity>(result);
     }
 
@@ -27,6 +30,7 @@ public class Factories_Tests
         ContactEntity contactEntity = new();
         var result = ContactFactory.Create(contactEntity);
 
+        Assert.NotNull(result);
         Assert.IsType<Contact>(result);
     }
 }
