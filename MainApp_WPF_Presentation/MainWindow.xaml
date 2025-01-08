@@ -27,7 +27,7 @@
         Opacity=".9"
         ></Image>
 
-        <StackPanel Grid.Row="0">
+        <StackPanel>
             <TextBlock Text="{Binding Headline}" 
                        Style="{StaticResource headline}"/>
 
@@ -52,7 +52,7 @@
         <ContentControl Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type viewmodels:MainViewModel}">
-                    
+
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodels:ContactAddViewModel}">
                     <views:ContactAddView/>
@@ -68,9 +68,5 @@
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
-        
-       
-
-
     </Grid>
 </Window>
