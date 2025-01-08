@@ -151,12 +151,10 @@ public class ContactService_Tests
     }
 
     [Fact]
-    public void RemoveAll_ShouldRemoveAllItemsInTheStorage_AndList()
+    public void RemoveAll_ShouldRemoveEverythingInTheStorage_AndList()
     {
-        var ce = new List<ContactEntity>
-        {
-            new ContactEntity { FirstName = "TestEXIST", LastName = "Testsson", Email = "janne@domain.com" },
-        };
+
+        _contactService.SaveContact(new ContactEntity { FirstName = "test", LastName = "alsotest", Email = "eventhisatest" });
 
         _storageServiceMock
         .Setup(ss => ss.DeleteContactsFromStorage())
@@ -165,6 +163,18 @@ public class ContactService_Tests
         var result = _contactService.RemoveAll();
 
         Assert.True(result);
-        Assert.Empty(ce);
+    }
+
+    [Fact]
+    public void RemoveOne_ShouldRemoveContact_TheOneThatIsSpecified()
+    {
+        var ce = new ContactEntity { Id = "1", FirstName = "test", LastName = "testsson", Email = "test@gmail.com" };
+        _contactService.SaveContact(ce);
+
+        var contactToRemove = new Contact { Id = ce.Id };
+
+        var result = _contactService.RemoveOne(contactToRemove);
+
+        Assert.True(result);
     }
 }
