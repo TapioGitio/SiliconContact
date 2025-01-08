@@ -19,7 +19,15 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="1">
+        <Image Source="./Resources/Images/thinkingMan.png"
+        Stretch="Uniform"
+        VerticalAlignment="Stretch"
+        HorizontalAlignment="Right"
+        Height="auto"
+        Opacity=".9"
+        ></Image>
+
+        <StackPanel Grid.Row="0">
             <TextBlock Text="{Binding Headline}" 
                        Style="{StaticResource headline}"/>
 
@@ -60,6 +68,9 @@
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
+        
+       
+
 
     </Grid>
 </Window>
