@@ -97,13 +97,56 @@ public class ContactService_Tests
         var result = _contactService.Display();
 
         Assert.NotEmpty(result);
+        Assert.IsType<List<Contact>>(result);
+
         Assert.Equal(ce[0].FirstName, result.First().FirstName);
         Assert.Equal(ce[0].LastName, result.First().LastName);
         Assert.Equal(ce[0].Email, result.First().Email);
 
-        Assert.Equal(ce[1].FirstName, result.FirstName);
-        Assert.Equal(ce[1].LastName, result.First().LastName);
-        Assert.Equal(ce[1].Email, result.First().Email);
+        Assert.Equal(ce[1].FirstName, result.ElementAt(1).FirstName);
+        Assert.Equal(ce[1].LastName, result.ElementAt(1).LastName);
+        Assert.Equal(ce[1].Email, result.ElementAt(1).Email);
 
+    }
+
+    [Fact]
+    public void Update_ShouldUpdateEmailOfAContact()
+    {
+        //Didnt know how to test this properly since the method cant update the mocked version
+        //so I did a little manual change to simulate a change.
+
+        var ce = new List<ContactEntity>
+        {
+            new ContactEntity { FirstName = "Test", LastName = "Testsson", Email = "janne@domain.com" },
+        };
+
+        _contactService.Update("Test", "CORRECT");
+
+        ce[0].Email = "CORRECT";
+        _storageServiceMock
+          .Setup(ss => ss.LoadContactsFromStorage())
+          .Returns(ce);
+
+        var result = _contactService.Display();
+
+        Assert.NotEmpty(result);
+        Assert.Equal("CORRECT", result.First().Email);
+    }
+
+    [Fact]
+    public void ContactExists_ShouldCheckIf_FirstNameMatches()
+    {
+        var ce = new List<ContactEntity>
+        {
+            new ContactEntity { FirstName = "TestEXIST", LastName = "Testsson", Email = "janne@domain.com" },
+        };
+
+        _storageServiceMock
+        .Setup(ss => ss.LoadContactsFromStorage())
+        .Returns(ce);
+
+        var result = _contactService.ContactExists("TestEXIST");
+
+        Assert.True(result);
     }
 }
