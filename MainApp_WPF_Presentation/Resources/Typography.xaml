@@ -5,7 +5,7 @@
     <Style x:Key ="headline" TargetType="TextBlock">
 
         <Setter Property="Margin" Value="14" />
-        <Setter Property="FontFamily" Value="Calibri" />
+        <Setter Property="FontFamily" Value="Batang" />
         <Setter Property="FontSize" Value="24" />
         <Setter Property="HorizontalAlignment" Value="Center" />
         <Setter Property="FontWeight" Value="Bold" />
