@@ -58,4 +58,32 @@ public class StorageService_Tests
 
         Directory.Delete(tempDirectory, true);
     }
+
+    [Fact]
+    public void DeleteContactsFromStorage_ShouldEraseAllContentInTheFolder()
+    {
+        var tempDirectory = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+
+        var storage = new StorageService(tempDirectory);
+
+        var ce = new List<ContactEntity>()
+        {
+            new ContactEntity{ FirstName = "Test", Email = "scadooble@gmail.com"}
+        };
+
+        storage.SaveContactsToStorage(ce);
+
+        var checkContent = storage.LoadContactsFromStorage();
+        Assert.NotEmpty(checkContent);
+        Assert.Single(checkContent);
+        Assert.Equal(ce[0].FirstName, checkContent[0].FirstName);
+
+        storage.DeleteContactsFromStorage();
+
+        var result = storage.LoadContactsFromStorage();
+        Assert.Empty(result);
+
+        Directory.Delete(tempDirectory, true);
+
+    }
 }
