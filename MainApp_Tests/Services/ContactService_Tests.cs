@@ -49,13 +49,13 @@ public class ContactService_Tests
         };
 
         _storageServiceMock
-          .Setup(ss => ss.LoadContactsToStorage(It.IsAny<List<ContactEntity>>()))
+          .Setup(ss => ss.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()))
           .Returns(true);
 
         var result = _contactService.AddContact(crf);
 
         Assert.True(result);
-        _storageServiceMock.Verify(s => s.LoadContactsToStorage(It.IsAny<List<ContactEntity>>()), Times.Once);
+        _storageServiceMock.Verify(s => s.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()), Times.Once);
 
     }
 
@@ -71,13 +71,13 @@ public class ContactService_Tests
         };
 
         _storageServiceMock
-            .Setup(ss => ss.LoadContactsToStorage(It.IsAny<List<ContactEntity>>()))
+            .Setup(ss => ss.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()))
             .Returns(true);
 
         var result = _contactService.SaveContact(ce);
 
         Assert.True(result);
-        _storageServiceMock.Verify(ss => ss.LoadContactsToStorage(It.IsAny<List<ContactEntity>>()), Times.Once);
+        _storageServiceMock.Verify(ss => ss.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()), Times.Once);
     }
 
     [Fact]
@@ -148,5 +148,23 @@ public class ContactService_Tests
         var result = _contactService.ContactExists("TestEXIST");
 
         Assert.True(result);
+    }
+
+    [Fact]
+    public void RemoveAll_ShouldRemoveAllItemsInTheStorage_AndList()
+    {
+        var ce = new List<ContactEntity>
+        {
+            new ContactEntity { FirstName = "TestEXIST", LastName = "Testsson", Email = "janne@domain.com" },
+        };
+
+        _storageServiceMock
+        .Setup(ss => ss.DeleteContactsFromStorage())
+        .Returns(true);
+
+        var result = _contactService.RemoveAll();
+
+        Assert.True(result);
+        Assert.Empty(ce);
     }
 }

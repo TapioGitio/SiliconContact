@@ -4,8 +4,8 @@ namespace Business.Interfaces
 {
     public interface IStorageService
     {
-        void DeleteContactsFromStorage();
+        bool DeleteContactsFromStorage();
         List<ContactEntity> LoadContactsFromStorage();
-        bool LoadContactsToStorage(List<ContactEntity> contactEntity);
+        bool SaveContactsToStorage(List<ContactEntity> contactEntity);
     }
 }

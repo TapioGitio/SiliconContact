@@ -18,7 +18,7 @@ public class StorageService : IStorageService
         _jsonSerializerOption = new JsonSerializerOptions { WriteIndented = true };
     }
 
-    public bool LoadContactsToStorage(List<ContactEntity> contactEntity)
+    public bool SaveContactsToStorage(List<ContactEntity> contactEntity)
     {
         try
         {
@@ -67,13 +67,19 @@ public class StorageService : IStorageService
         }
     }
 
-    public void DeleteContactsFromStorage()
+    public bool DeleteContactsFromStorage()
     {
         try
         {
             if (File.Exists(_filePath)) 
             { 
                 File.Delete(_filePath);
+                return true;
+            }
+            else
+            {
+                Debug.WriteLine("File does not exist");
+                return false;
             }
         }
 
@@ -81,5 +87,6 @@ public class StorageService : IStorageService
         {
             Debug.WriteLine(ex.Message);
         }
+        return false;
     }
 }

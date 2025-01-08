@@ -19,7 +19,7 @@ public class StorageService_Tests
             new ContactEntity{ FirstName = "Test", Email = "scadooble@gmail.com"}
         };
 
-        var result = storage.LoadContactsToStorage(ce);
+        var result = storage.SaveContactsToStorage(ce);
 
         Assert.True(result);
         Assert.Single(ce);
@@ -46,7 +46,7 @@ public class StorageService_Tests
             new ContactEntity{ FirstName = "Test", Email = "scadooble@gmail.com"}
         };
 
-        storage.LoadContactsToStorage(ce);
+        storage.SaveContactsToStorage(ce);
 
         var result = storage.LoadContactsFromStorage();
 
@@ -71,7 +71,7 @@ public class StorageService_Tests
             new ContactEntity{ FirstName = "Test", Email = "scadooble@gmail.com"}
         };
 
-        storage.LoadContactsToStorage(ce);
+        storage.SaveContactsToStorage(ce);
 
         var checkContent = storage.LoadContactsFromStorage();
         Assert.NotEmpty(checkContent);
