@@ -6,6 +6,6 @@ namespace Business.Interfaces
     {
         void DeleteContactsFromStorage();
         List<ContactEntity> LoadContactsFromStorage();
-        bool SaveContactsToStorage(List<ContactEntity> contactEntity);
+        bool LoadContactsToStorage(List<ContactEntity> contactEntity);
     }
 }

@@ -17,7 +17,7 @@ public class ContactService_Tests
     }
 
     [Fact]
-    public void CreateContactEntity_ShouldConvertContactFormToEntity()
+    public void ConvertToContactEntity_ShouldConvertContactFormToEntity()
     {
         var crf = new ContactRegistrationForm()
         {
@@ -41,7 +41,7 @@ public class ContactService_Tests
     {
 
         var crf = new ContactRegistrationForm()
-        
+
         {
             FirstName = "Kalle",
             LastName = "kallesson",
@@ -49,13 +49,13 @@ public class ContactService_Tests
         };
 
         _storageServiceMock
-          .Setup(ss => ss.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()))
+          .Setup(ss => ss.LoadContactsToStorage(It.IsAny<List<ContactEntity>>()))
           .Returns(true);
 
         var result = _contactService.AddContact(crf);
 
         Assert.True(result);
-        _storageServiceMock.Verify(s => s.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()), Times.Once);
+        _storageServiceMock.Verify(s => s.LoadContactsToStorage(It.IsAny<List<ContactEntity>>()), Times.Once);
 
     }
 
@@ -71,12 +71,39 @@ public class ContactService_Tests
         };
 
         _storageServiceMock
-            .Setup(ss => ss.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()))
+            .Setup(ss => ss.LoadContactsToStorage(It.IsAny<List<ContactEntity>>()))
             .Returns(true);
 
         var result = _contactService.SaveContact(ce);
 
         Assert.True(result);
-        _storageServiceMock.Verify(ss => ss.SaveContactsToStorage(It.IsAny<List<ContactEntity>>()), Times.Once);
+        _storageServiceMock.Verify(ss => ss.LoadContactsToStorage(It.IsAny<List<ContactEntity>>()), Times.Once);
+    }
+
+    [Fact]
+    public void Display_ShouldReturnAListOfTypeContact()
+    {
+        var ce = new List<ContactEntity>
+        {
+            new ContactEntity { FirstName = "Test", LastName = "Testsson", Email = "janne@domain.com" },
+            new ContactEntity { FirstName = "Test2", LastName = "Testsson2", Email = "carl@domain.com" }
+        };
+
+
+        _storageServiceMock
+            .Setup(ss => ss.LoadContactsFromStorage())
+            .Returns(ce);
+
+        var result = _contactService.Display();
+
+        Assert.NotEmpty(result);
+        Assert.Equal(ce[0].FirstName, result.First().FirstName);
+        Assert.Equal(ce[0].LastName, result.First().LastName);
+        Assert.Equal(ce[0].Email, result.First().Email);
+
+        Assert.Equal(ce[1].FirstName, result.FirstName);
+        Assert.Equal(ce[1].LastName, result.First().LastName);
+        Assert.Equal(ce[1].Email, result.First().Email);
+
     }
 }

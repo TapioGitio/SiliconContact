@@ -36,7 +36,7 @@ public class ContactService(IStorageService storageService) : IContactService
         try
         {
             _contacts.Add(contactEntity);
-            _storageService.SaveContactsToStorage(_contacts);
+            _storageService.LoadContactsToStorage(_contacts);
             return true;
         }
         catch (Exception ex)
@@ -64,7 +64,7 @@ public class ContactService(IStorageService storageService) : IContactService
         catch (Exception ex)
         {
             Debug.WriteLine($"Error loading the list: {ex.Message}");
-            return [];
+            return Enumerable.Empty<Contact>();
         }
     }
 
@@ -81,7 +81,7 @@ public class ContactService(IStorageService storageService) : IContactService
             {
                 contactEntity.Email = updatedEmail;
 
-                _storageService.SaveContactsToStorage(_contacts);
+                _storageService.LoadContactsToStorage(_contacts);
                 return true;
             }
             return false;
@@ -135,7 +135,7 @@ public class ContactService(IStorageService storageService) : IContactService
             if (contactEntity != null)
             {
                 _contacts.Remove(contactEntity);
-                _storageService.SaveContactsToStorage(_contacts);
+                _storageService.LoadContactsToStorage(_contacts);
                 return true;
             }
             else

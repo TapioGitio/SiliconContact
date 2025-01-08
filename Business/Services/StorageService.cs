@@ -18,7 +18,7 @@ public class StorageService : IStorageService
         _jsonSerializerOption = new JsonSerializerOptions { WriteIndented = true };
     }
 
-    public bool SaveContactsToStorage(List<ContactEntity> contactEntity)
+    public bool LoadContactsToStorage(List<ContactEntity> contactEntity)
     {
         try
         {
