@@ -22,21 +22,22 @@
             <TextBlock Text="{Binding Headline}" Style="{StaticResource headline}"/>
         </StackPanel>
 
-        <ItemsControl Grid.Row="1" 
+        <ListView Grid.Row="1" 
                   ItemsSource="{Binding Contacts}"
                   HorizontalContentAlignment="Stretch"
                   Margin="40 10 40 0"
                   BorderBrush="DarkKhaki"
                   BorderThickness="2"
+                  Background="Lavender"
+                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
                   >
-            <ItemsControl.ItemTemplate>
+            <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="5 4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        
                         <StackPanel Grid.Column="0" 
                                     HorizontalAlignment="Left" 
                                     >
@@ -47,14 +48,14 @@
                         </StackPanel>
 
                         <Button Grid.Column="1"
-                                Style="{StaticResource DeleteBtn}"
-                                CommandParameter="{Binding}"
-                                Command="{Binding DataContext.DeleteOneCommand, RelativeSource={RelativeSource AncestorType=UserControl} }"
-                                />
+                                    Style="{StaticResource DeleteBtn}"
+                                    CommandParameter="{Binding}"
+                                    Command="{Binding DataContext.DeleteOneCommand, RelativeSource={RelativeSource AncestorType=UserControl} }"
+                                    />
                     </Grid>
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+            </ListView.ItemTemplate>
+        </ListView>
         
         <Button Grid.Row="2" Margin="0 10" 
                Content="Back"

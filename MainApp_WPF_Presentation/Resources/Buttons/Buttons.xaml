@@ -58,16 +58,16 @@
             </Setter.Value>
         </Setter>
         <Setter Property="HorizontalAlignment" Value="Right" />
-        <Setter Property="Foreground" Value="IndianRed" />
+        <Setter Property="Foreground" Value="DarkKhaki" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
         <Setter Property="Content" Value="&#xE750;" />
-        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontSize" Value="25" />
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="Green" />
+                <Setter Property="Foreground" Value="IndianRed" />
             </Trigger>
         </Style.Triggers>
 
