@@ -14,26 +14,30 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
+        <StackPanel Grid.Row="0" Margin="0,0,0,10">
             <TextBlock Text="{Binding Headline}" Style="{StaticResource headline}"/>
             <TextBlock Text="{Binding ErrorMessage}" Style="{StaticResource errorMessage}" />
             <TextBlock Text="{Binding SuccessMessage}" Style="{StaticResource successMessage}" />
 
         </StackPanel>
 
-        <Button Grid.Row="1"
-                Margin="0 40 0 10"
-                Content="Yes"
+        <StackPanel Grid.Row="1" 
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            
+        <Button 
+                Content="Delete"
                 Style="{StaticResource MenuButtons}"
                 Command="{Binding DeleteCommand}"
                 />
-        <Button Grid.Row="2" 
+        <Button 
                 Content="Back"
                 Style="{StaticResource MenuButtons}"
                 Command="{Binding SwingHomeCommand}"/>
+            
+        </StackPanel>
 
     </Grid>
 </UserControl>

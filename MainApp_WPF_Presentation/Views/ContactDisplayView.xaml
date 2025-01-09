@@ -25,7 +25,7 @@
         <ListView Grid.Row="1" 
                   ItemsSource="{Binding Contacts}"
                   HorizontalContentAlignment="Stretch"
-                  Margin="50 0 50 20"
+                  Margin="50 0 50 10"
                   >
             <ListView.ItemTemplate>
                 <DataTemplate DataType="models:Contact">
@@ -35,7 +35,10 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         
-                        <StackPanel Grid.Column="0" HorizontalAlignment="Left" Margin="0 0 0 10">
+                        <StackPanel Grid.Column="0" 
+                                    HorizontalAlignment="Left" 
+                                    Margin="0 0 0 8">
+                            
                             <TextBlock Text="{Binding FirstName}" />
                             <TextBlock Text="{Binding LastName}" />
                             <TextBlock Text="{Binding Email}" />
@@ -52,7 +55,7 @@
             </ListView.ItemTemplate>
         </ListView>
         
-        <Button Grid.Row="2" 
+        <Button Grid.Row="2" Margin="0,20" 
                Content="Back"
                Style="{StaticResource MenuButtons}"
                Command="{Binding SwingHomeCommand}"/>
