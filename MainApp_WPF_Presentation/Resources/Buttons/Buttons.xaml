@@ -43,6 +43,20 @@
     </Style>
 
     <Style x:Key="DeleteBtn" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="Border_btn">
+                        <TextBlock Text="{TemplateBinding Content}"
+                                   Foreground="{TemplateBinding Foreground}"
+                                   Background="{TemplateBinding Background}"
+                                   FontFamily="{TemplateBinding FontFamily}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         <Setter Property="HorizontalAlignment" Value="Right" />
         <Setter Property="Foreground" Value="IndianRed" />
         <Setter Property="Background" Value="Transparent" />
@@ -50,6 +64,12 @@
         <Setter Property="FontFamily" Value="Segoe MDL2 Assets" />
         <Setter Property="Content" Value="&#xE750;" />
         <Setter Property="FontSize" Value="20" />
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="Green" />
+            </Trigger>
+        </Style.Triggers>
 
     </Style>
         
