@@ -23,7 +23,7 @@
         <StackPanel Grid.Row="0" Width="200">
             <TextBlock Text="{Binding Headline}" Style="{StaticResource headline}"/>
 
-            <Label Content="Enter first name to change"/>
+            <Label Content="Enter your first name to change"/>
             <TextBox Text="{Binding NameInput, UpdateSourceTrigger=PropertyChanged}" />
 
             <Label Content="Enter new email" IsEnabled="{Binding DoTheyExist}" />
