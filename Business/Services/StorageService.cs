@@ -47,7 +47,7 @@ public class StorageService : IStorageService
         {
             if (!File.Exists(_filePath))
             {
-                Debug.WriteLine("Storage file/folder did not exist");
+                Debug.WriteLine("Storage file did not exist");
                 return [];
             }
 
