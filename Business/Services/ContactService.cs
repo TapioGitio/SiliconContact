@@ -141,6 +141,7 @@ public class ContactService(IStorageService storageService) : IContactService
             else
             {
                 Debug.WriteLine("Contact not found");
+                return false;
             }
         }
 
