@@ -71,9 +71,9 @@ public class StorageService : IStorageService
     {
         try
         {
-            if (File.Exists(_filePath)) 
+            if (Directory.Exists(_directoryPath)) 
             { 
-                File.Delete(_filePath);
+                Directory.Delete(_directoryPath, true);
                 return true;
             }
             else
