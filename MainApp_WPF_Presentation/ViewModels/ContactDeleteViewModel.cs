@@ -30,13 +30,13 @@ public partial class ContactDeleteViewModel : ObservableObject
         if(Contacts.Any())
         {
             _contactService.RemoveAll();
-            SuccessMessage = "Contacts removed succesfully";
+            SuccessMessage = "Contacts removed succesfully.";
             ErrorMessage = null!;
 
         }
         else
         {
-            ErrorMessage = "Storage empty, nothing to remove";
+            ErrorMessage = "Storage empty, nothing to remove.";
             SuccessMessage = null!;
         }
     }

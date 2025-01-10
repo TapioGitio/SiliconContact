@@ -41,20 +41,20 @@ public partial class ContactAddViewModel : ObservableObject
 
         if (_contactService.ContactExists(RegForm.FirstName))
         {
-            ErrorMessage = "Contact already exists";
+            ErrorMessage = "Contact already exists.";
             SuccessMessage = null!;
             return;
         }
         else if (RegForm.HasErrors)
         {
-            ErrorMessage = "Encountered an error, please check your spelling";
+            ErrorMessage = "Encountered an error, please check your spelling.";
             
         }
         else
         {
         _contactService.AddContact(RegForm);
         ErrorMessage = null!;
-        SuccessMessage = "Contact was created";
+        SuccessMessage = "Contact was created.";
         }
     }
 
