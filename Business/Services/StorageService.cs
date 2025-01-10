@@ -53,10 +53,10 @@ public class StorageService : IStorageService
 
             var json = File.ReadAllText(_filePath);
             Debug.WriteLine($"Loaded from storage: {json}");
-            var list = JsonSerializer.Deserialize<List<ContactEntity>>(json, _jsonSerializerOption);
+            var upload = JsonSerializer.Deserialize<List<ContactEntity>>(json, _jsonSerializerOption);
 
 
-            return list ?? [];
+            return upload ?? [];
 
         }
 
